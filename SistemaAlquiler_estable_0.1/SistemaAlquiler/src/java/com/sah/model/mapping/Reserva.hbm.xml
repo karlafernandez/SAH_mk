@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-jun-2014 0:40:48 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="alquilerhabitdb" name="com.sah.model.entities.Reserva" table="reserva">
+    <id name="idreserva" type="int">
+      <column name="idreserva"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.sah.model.entities.Cuarto" fetch="select" name="cuarto">
+      <column name="id_cuarto"/>
+    </many-to-one>
+    <many-to-one class="com.sah.model.entities.Cliente" fetch="select" name="cliente">
+      <column name="id_cliente"/>
+    </many-to-one>
+    <property name="fecha" type="string">
+      <column length="25" name="fecha" not-null="true"/>
+    </property>
+    <property name="tiempo" type="string">
+      <column length="30" name="tiempo" not-null="true"/>
+    </property>
+    <property name="monto" type="string">
+      <column length="30" name="monto" not-null="true"/>
+    </property>
+    <property name="idArrendatario" type="java.lang.Integer">
+      <column name="id_arrendatario"/>
+    </property>
+    <set inverse="true" name="comentarioses">
+      <key>
+        <column name="id_reserva"/>
+      </key>
+      <one-to-many class="com.sah.model.entities.Comentarios"/>
+    </set>
+  </class>
+</hibernate-mapping>

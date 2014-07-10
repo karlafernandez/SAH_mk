@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-jun-2014 0:40:48 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="alquilerhabitdb" name="com.sah.model.entities.Cuarto" table="cuarto">
+    <id name="idcuarto" type="int">
+      <column name="idcuarto"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.sah.model.entities.Ubicacion" fetch="select" name="ubicacion">
+      <column name="id_ubicacion"/>
+    </many-to-one>
+    <many-to-one class="com.sah.model.entities.Arrendatario" fetch="select" name="arrendatario">
+      <column name="id_arrendatario"/>
+    </many-to-one>
+    <property name="caracteristicas" type="string">
+      <column length="50" name="caracteristicas"/>
+    </property>
+    <property name="banio" type="string">
+      <column length="2" name="banio" />
+    </property>
+    <property name="restricciones" type="string">
+      <column length="60" name="restricciones" />
+    </property>
+    <property name="estado" type="string">
+      <column length="50" name="estado" />
+    </property>
+    <property name="detalleUbicacion" type="string">
+      <column length="60" name="detalle_ubi" />
+    </property>
+    <property name="direccion" type="string">
+      <column length="60" name="direccion" />
+    </property>
+   <property name="telefonoContacto" type="string">
+      <column length="60" name="telefono_contacto" />
+    </property>
+    <set inverse="true" name="detalles">
+      <key>
+        <column name="idcuarto"/>
+      </key>
+      <one-to-many class="com.sah.model.entities.Detalle"/>
+    </set>
+    <set inverse="true" name="reservas">
+      <key>
+        <column name="id_cuarto"/>
+      </key>
+      <one-to-many class="com.sah.model.entities.Reserva"/>
+    </set>
+  </class>
+</hibernate-mapping>
