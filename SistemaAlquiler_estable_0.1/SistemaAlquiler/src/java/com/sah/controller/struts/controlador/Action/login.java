@@ -6,17 +6,14 @@
 
 package com.sah.controller.struts.controlador.Action;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  *
  * @author karla
  */
-public class login extends org.apache.struts.action.ActionForm {
+public class Login extends ActionSupport {
+    private static final long serialVersionUID = 1L;
     
     private String usuario;    
     private String pass;
@@ -37,29 +34,13 @@ public class login extends org.apache.struts.action.ActionForm {
         this.usuario = usuario;
     }
 //
-//    public login() {
-//        super();
-//        // TODO Auto-generated constructor stub
-//    }
+    public Login() {
+        
+        
+    }
+    public String execute(){
+        return "success";
+    }
 
-    /**
-     * This is the action called from the Struts framework.
-     *
-     * @param mapping The ActionMapping used to select this instance.
-     * @param request The HTTP Request we are processing.
-     * @return
-     */
-    @Override
-    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        ActionErrors errors = new ActionErrors();
-        if (usuario.length()<=0)
-            errors.add("usu", new ActionMessage("errors.usuario"));
-        else
-        {
-            if(pass.length()<=0)
-                errors.add("pass", new ActionMessage("errors.clave"));
-        }
-        mapping.getInputForward();
-        return errors;
-        }
+
 }
