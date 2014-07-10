@@ -1,0 +1,109 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <div class="row-fluid">
+        <div style="height:30px;"></div>
+        <h2>¿En qué necesitas especializarte?</h2>
+        <div style="height:20px;"></div>
+        <ul class="nav nav-tabs tabs-listado">
+	 		<li class="active"><a data-toggle="tab">Ver Todos</a></li>
+	 		<li><a href="../cursos/" data-toggle="tab">Cursos</a></li>
+	  		<li><a href="../diplomados/" data-toggle="tab">Diplomados</a></li>
+			<%--<li><a href="#webinars" data-toggle="tab">Webinars</a></li>--%>
+	    </ul>
+        <div id="content-listado">
+            <div class="form-horizontal pull-right">
+                <fieldset>
+				
+		                <!-- Select Basic -->
+		                <div class="control-group">
+		                    <div class="controls">
+		                        
+                                <asp:DropDownList ID="ddlTipoArea" runat="server" name="selectbasiareac" CssClass="input-xlarge"></asp:DropDownList>
+		                    </div>
+		                </div>
+		
+		                <!-- Select Basic -->
+		                <div class="control-group">
+		                    <div class="controls">
+		                        
+                                <asp:DropDownList ID="ddlModalidad" runat="server" name="selectbasiareac" CssClass="input-medium"></asp:DropDownList>
+		                    </div>
+		                </div>
+
+
+		                <!-- Button -->
+		                <div class="control-group" id="control-group-buscar">
+		                    <div class="controls">
+		                        <%--<button id="Buscar" name="Buscar" class="btn btn-naranja">Buscar</button>--%>
+                                <asp:Button ID="btnBuscar" runat="server" Text="Filtrar" name="Buscar" CssClass="btn btn-naranja" />
+		                    </div>
+		                </div>
+		
+
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="listado-cursos-container clearfix" >
+            <asp:Repeater ID="rpCursos" runat="server">
+                <ItemTemplate>
+                    <div class="curso_lista">
+                        <div class="curso_foto span4">
+						    <%--<a href="#"><img src="../img/curso-1.png">--%>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# String.Concat("../curso/", DataBinder.Eval(Container.DataItem, "ac_nombre"), "/Default.aspx?curso=", DataBinder.Eval(Container.DataItem, "id_dap"))%>' Target="_blank">
+                                <asp:Image ID="Image1" runat="server" ImageUrl='<%# String.Concat("~/img-web/secciones/", DataBinder.Eval(Container.DataItem, "pg_img_portada"))%>' />
+                            </asp:HyperLink>
+				        </div> <!-- foto -->
+                        <div class="curso_descripcion span8">
+			                <h4>
+                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# String.Concat("../curso/", DataBinder.Eval(Container.DataItem, "ac_nombre"), "/Default.aspx?curso=", DataBinder.Eval(Container.DataItem, "id_dap"))%>' Text='<%# DataBinder.Eval(Container.DataItem, "pg_nombre") %>' CssClass="text-left" Target="_blank">
+                                </asp:HyperLink>
+                                <%--<a href="#" class="text-left">Nombre del curso, nombre del curso, nombre del curso, nombre del curso</a>--%>
+			                </h4>
+						    <p>
+                                <asp:Label ID="lblDescripcion" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "pg_meta_description") %>'></asp:Label>
+						    </p>
+						    <p class="text-left tipo-de-curso-fecha"><small><asp:Label ID="lblFecha" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "dp_fecha_inicio") %>'></asp:Label></small></p>
+						    
+                            <a id="mas-informacion" name="masinformacion" class="btn-naranja" href='<%# String.Concat("../curso/", DataBinder.Eval(Container.DataItem, "ac_nombre"), "/Default.aspx?curso=", DataBinder.Eval(Container.DataItem, "id_dap"))%>' target="_blank">Más Información</a>
+				        </div> <!-- curso descripcion -->	
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+	    </div> <!-- listado cursos container --> 
+
+        <ul class="hidden-desktop hidden-tablet hidden-phone">
+            <li><a href="#">token</a></li>
+        </ul>
+
+        <div class="pagination pagination-centered">
+
+            <asp:Repeater ID="rptPager" runat="server">
+                <ItemTemplate>
+                    <ul>
+                        <li>
+                            <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
+                                
+                                OnClick="cambio_pagina" OnClientClick='<%# If(Not Convert.ToBoolean(Eval("Enabled")), "return false;", "") %>'></asp:LinkButton>
+                        </li>
+                    </ul>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+
+        
+
+    </div>
+       
+    </body>
+</html>

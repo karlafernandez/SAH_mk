@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-jun-2014 0:40:48 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class catalog="alquilerhabitdb" name="com.sah.model.entities.Cliente" table="cliente">
+        <id name="idcliente" type="int">
+            <column name="idcliente"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nombre" type="string">
+            <column length="45" name="nombre" not-null="true"/>
+        </property>
+        <property name="apellido" type="string">
+            <column length="45" name="apellido" not-null="true"/>
+        </property>
+        <property name="ocupacion" type="string">
+            <column length="45" name="ocupacion" not-null="true"/>
+        </property>
+        <property name="correo" type="string">
+            <column length="45" name="correo" not-null="true"/>
+        </property>
+        <property name="telefono" type="string">
+            <column length="45" name="telefono" not-null="true"/>
+        </property>
+        <property name="dni" type="string">
+            <column length="45" name="dni"/>
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="fecha_nac"/>
+        </property>
+        
+      <set inverse="true" name="reservas">
+            <key>
+                <column name="id_cliente"/>
+            </key>
+            <one-to-many class="com.sah.model.entities.Reserva"/>
+        </set>
+    </class>
+  <class catalog="alquilerhabitdb" name="com.sah.model.entities.Cliente" table="cliente">
+    <id name="idcliente" type="int">
+      <column name="idcliente"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="45" name="nombre" not-null="true"/>
+    </property>
+    <property name="apellido" type="string">
+      <column length="45" name="apellido" not-null="true"/>
+    </property>
+    <property name="ocupacion" type="string">
+      <column length="45" name="ocupacion" not-null="true"/>
+    </property>
+    <property name="correo" type="string">
+      <column length="45" name="correo" not-null="true"/>
+    </property>
+    <property name="telefono" type="string">
+      <column length="45" name="telefono" not-null="true"/>
+    </property>
+    <property name="dni" type="string">
+      <column length="45" name="dni"/>
+    </property>
+    <set inverse="true" name="reservas">
+      <key>
+        <column name="id_cliente"/>
+      </key>
+      <one-to-many class="com.sah.model.entities.Reserva"/>
+    </set>
+  </class>
+</hibernate-mapping>

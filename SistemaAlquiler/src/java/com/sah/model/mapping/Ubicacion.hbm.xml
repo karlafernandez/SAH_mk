@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-jun-2014 0:40:48 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="alquilerhabitdb" name="com.sah.model.entities.Ubicacion" table="ubicacion">
+    <id name="idubicacion" type="int">
+      <column name="idubicacion"/>
+      <generator class="identity"/>
+    </id>
+    <property name="departamento" type="string">
+      <column length="45" name="departamento" not-null="true"/>
+    </property>
+    <property name="provincia" type="string">
+      <column length="45" name="provincia" not-null="true"/>
+    </property>
+    <property name="distrito" type="string">
+      <column length="45" name="distrito" not-null="true"/>
+    </property>
+    <set inverse="true" name="cuartos">
+      <key>
+        <column name="id_ubicacion"/>
+      </key>
+      <one-to-many class="com.sah.model.entities.Cuarto"/>
+    </set>
+  </class>
+</hibernate-mapping>

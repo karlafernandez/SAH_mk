@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-jun-2014 0:40:48 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="alquilerhabitdb" name="com.sah.model.entities.Arrendatario" table="arrendatario">
+    <id name="idArrendatario" type="int">
+      <column name="id_arrendatario"/>
+      <generator class="identity"/>
+    </id>
+    <property name="dni" type="string">
+      <column length="45" name="dni"/>
+    </property>
+    <property name="nombre" type="string">
+      <column length="45" name="nombre"/>
+    </property>
+    <property name="apellido" type="string">
+      <column length="45" name="apellido"/>
+    </property>
+    <property name="ocupacion" type="string">
+      <column length="45" name="ocupacion"/>
+    </property>
+    <property name="correo" type="string">
+      <column length="45" name="correo"/>
+    </property>
+    <property name="telefono" type="string">
+      <column length="45" name="telefono"/>
+    </property>
+    <set inverse="true" name="cuartos">
+      <key>
+        <column name="id_arrendatario"/>
+      </key>
+      <one-to-many class="com.sah.model.entities.Cuarto"/>
+    </set>
+  </class>
+</hibernate-mapping>

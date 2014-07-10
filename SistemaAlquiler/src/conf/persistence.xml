@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="SistemaAlquilerPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.sah.model.entities.Cuarto_1</class>
+    <class>com.sah.model.entities.Arrendatario_1</class>
+    <class>com.sah.model.entities.Ubicacion_1</class>
+    <class>com.sah.model.entities.Ubicacion</class>
+    <class>com.sah.model.entities.Arrendatario</class>
+    <class>com.sah.model.entities.Cuarto</class>
+    <class>com.sah.model.entities.Cliente</class>
+    <class>com.sah.model.entities.Reserva</class>
+    <class>com.sah.model.entities.Detalle</class>
+    <class>com.sah.model.entities.Comentarios</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/alquilerhabitdb?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.password" value="123456"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>
