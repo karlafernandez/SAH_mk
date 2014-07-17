@@ -230,3 +230,7 @@ nb-configuration.xml
 *.jar
 *.war
 *.ear
+SistemaAlquiler_estable_0.1/SistemaAlquiler/nbproject/build-impl.xml~
+*.xml~
+*.xml
+SistemaAlquiler_estable_0.1/SistemaAlquiler/nbproject/private/private.xml

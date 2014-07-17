@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author jorge
+ * @author karla
  */
 @WebServlet(name = "Mostrar", urlPatterns = {"/Mostrar"})
 public class Mostrar extends HttpServlet {

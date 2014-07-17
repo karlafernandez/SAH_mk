@@ -1,7 +1,7 @@
 <%-- 
     Document   : registrado
-    Created on : 10/06/2014, 10:52:46 PM
-    Author     : jorge
+    Created on : 10/07/2014, 10:52:46 PM
+    Author     : karla
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

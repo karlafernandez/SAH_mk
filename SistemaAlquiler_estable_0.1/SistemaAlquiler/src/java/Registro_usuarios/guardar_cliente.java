@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author jorge
+ * @author karla
  */
 @WebServlet(name = "guardar_cliente", urlPatterns = {"/guardar_cliente"})
 public class guardar_cliente extends HttpServlet {

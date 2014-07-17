@@ -63,8 +63,6 @@ public class HabitacionDAOHibernate extends DAOGenerico{
          
     }
 
- 
-
 /*
  
  @Override
@@ -87,7 +85,6 @@ public class HabitacionDAOHibernate extends DAOGenerico{
                operacionDevVO = listaOperacion.get(0);
         return operacionDevVO;
     }
-
  */
      
 }

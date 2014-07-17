@@ -50,7 +50,7 @@
                             <a href="registrate.jsp">Regístrate</a>
                         </li>
                         <li class="page-scroll">
-                            <a href="sobre_nosotros.jsp">Sobre nosotras</a>
+                            <a href="sobre_nosotros.jsp">Sobre nosotros</a>
                         </li>
                        <li class="page-scroll">
                             <a href="contactenos.jsp">Contáctanos</a>

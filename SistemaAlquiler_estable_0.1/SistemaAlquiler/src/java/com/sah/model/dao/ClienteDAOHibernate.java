@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Meli
+ * @author Karla
  */
 public class ClienteDAOHibernate extends DAOGenerico{
 
