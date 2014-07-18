@@ -1,5 +1,5 @@
 package com.sah.model.entities;
-// Generated 11-jun-2014 0:40:44 by Hibernate Tools 3.2.1.GA
+// Generated 11-jul-2014 0:40:44 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
