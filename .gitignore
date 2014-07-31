@@ -230,3 +230,7 @@ nb-configuration.xml
 *.jar
 *.war
 *.ear
+/SistemaAlquiler_estable_0.3/alquilerHabitaciones/cjava-common/target/
+/SistemaAlquiler_estable_0.3/alquilerHabitaciones/cjava-model/target/
+/SistemaAlquiler_estable_0.3/alquilerHabitaciones/cjava-dataaccess/target/
+/SistemaAlquiler_estable_0.3/alquilerHabitaciones/cjava-service/target/

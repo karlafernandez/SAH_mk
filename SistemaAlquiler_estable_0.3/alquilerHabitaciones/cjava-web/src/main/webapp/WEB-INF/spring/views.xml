@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <!--    <bean id="reporteAsistenciaOperacionKey" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+        <property name="contentDispositionMappings">
+            <props>
+                <prop key="xls">attachment; filename=reporteAsistencia.xls</prop>
+            </props>
+        </property>
+        <property name="url" value="/WEB-INF/reportes/reporteAsistenciaOperacion.jasper" />
+        <property name="reportDataKey" value="reporteAsistenciaOperacionKey"/>
+    </bean>    
+    
+    <bean id="reporteInscripcionAlumnoKey" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+        <property name="contentDispositionMappings">
+            <props>
+                <prop key="xls">attachment; filename=reporteInscripcion.xls</prop>
+            </props>
+        </property>
+        <property name="url" value="/WEB-INF/reportes/reporteInscripcionAlumno.jasper" />
+        <property name="reportDataKey" value="reporteInscripcionAlumnoKey"/>
+    </bean>    
+    
+    <bean id="reporteAbandonoKey" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+        <property name="contentDispositionMappings">
+            <props>
+                <prop key="xls">attachment; filename=reporteDeAbandonos.xls</prop>
+            </props>
+        </property>
+        <property name="url" value="/WEB-INF/reportes/reporteAbandonoOpAlumno.jasper" />
+        <property name="reportDataKey" value="reporteAbandonoKey"/>
+    </bean>  
+      
+    <bean id="reporteDatosAlumKey" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+        <property name="contentDispositionMappings">
+            <props>
+                <prop key="xls">attachment; filename=reporteDatosAlumno.xls</prop>
+            </props>
+        </property>
+        <property name="url" value="/WEB-INF/reportes/reporteDatosPrincipalesAlumno.jasper" />
+        <property name="reportDataKey" value="reporteDatosAlumKey"/>
+    </bean> 
+    
+    <bean id="reporteEncuestaKey" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+        <property name="contentDispositionMappings">
+            <props>
+                <prop key="xls">attachment; filename=reporteEncuesta.xls</prop>
+            </props>
+        </property>
+        <property name="url" value="/WEB-INF/reportes/reporteEncuesta.jasper" />
+        <property name="reportDataKey" value="reporteEncuestaKey"/>
+    </bean> 
+    
+    <bean id="reporteAluAprobadosKey" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+        <property name="contentDispositionMappings">
+            <props>
+                <prop key="xls">attachment; filename=reporteAlumnosAprobados.xls</prop>
+            </props>
+        </property>
+        <property name="url" value="/WEB-INF/reportes/reporteAluAprobados.jasper" />
+        <property name="reportDataKey" value="reporteAluAprobadosKey"/>
+    </bean> 
+    
+    <bean id="reporteRecordAlumnoKey" class="org.springframework.web.servlet.view.jasperreports.JasperReportsMultiFormatView">
+        <property name="contentDispositionMappings">
+            <props>
+                <prop key="xls">attachment; filename=reporteRecordDeAlumnos.xls</prop>
+            </props>
+        </property>
+        <property name="url" value="/WEB-INF/reportes/reporteRecordAlumnos.jasper"/>
+        <property name="reportDataKey" value="reporteRecordAlumnoKey"/>
+    </bean>    -->
+</beans>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    
+
+    <mvc:view-controller path="/index.html" />
+
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/themes/**" location="/themes/"/>
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/img/**" location="/img/"/>
+    <mvc:resources mapping="/img/**" location="/img/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/manuales/**" location="/manuales/"/>
+    
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:/messages/schedule.properties" />
+    </bean> 
+    
+    <bean id="viewResolver" 
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+          p:prefix="/WEB-INF/views/" 
+          p:suffix=".jsp" 
+          p:order="1"/>
+          
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="900000000000000"/>
+    </bean>
+     
+    <bean id="tilesviewResolver" 
+          class="org.springframework.web.servlet.view.tiles2.TilesViewResolver" 
+          p:order="0"/>
+                 
+    <!--    <bean id="jasperViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver"
+    p:order="0"
+    p:location="/WEB-INF/spring/views.xml"/>      -->
+          
+    <bean id="tilesConfigurer" 
+          class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles-definitions.xml</value>
+            </list>
+        </property>
+    </bean> 
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+          p:basenames="messages/messages" />
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+              p:paramName="locale" />
+    </mvc:interceptors>
+
+    <!-- Manejo de Recursos http://stackoverflow.com/questions/1483063/spring-mvc-3-and-handling-static-content-am-i-missing-something/2001500#2001500 -->
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+    <!--<bean id="publisherAnnotation" class="org.springframework.integration.aop.PublisherAnnotationBeanPostProcessor"/>-->
+</beans>

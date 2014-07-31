@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Meli
  */
-@WebServlet(description="Simple servlet", urlPatterns={"/registroHabitacion"})
+@WebServlet(description="Simple servlet", urlPatterns={"/registroHabitacion2"})
 public class RegistroClientenServlet extends HttpServlet {
 
     @Override

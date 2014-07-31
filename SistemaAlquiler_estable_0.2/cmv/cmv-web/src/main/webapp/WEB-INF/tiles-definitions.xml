@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="template-index" template="/WEB-INF/views/templates/index.jsp">
+        <put-attribute name="indexHeader" value="/WEB-INF/views/includes/blank.jsp" />        
+        <put-attribute name="indexFooter" value="/WEB-INF/views/includes/footer.jsp" />
+        <put-attribute name="indexContent" value="/WEB-INF/views/includes/blank.jsp" />
+    </definition>
+
+    <definition name="template-main" template="/WEB-INF/views/templates/main.jsp">
+        <put-attribute name="mainHeader" value="/WEB-INF/views/includes/header.jsp" />        
+        <put-attribute name="mainFooter" value="/WEB-INF/views/includes/footer.jsp" />
+        <put-attribute name="mainMenu" value="/WEB-INF/views/includes/menu.jsp" />
+        <put-attribute name="mainMensaje" value="/WEB-INF/views/includes/mensaje.jsp" /> 
+        <put-attribute name="mainContent" value="/WEB-INF/views/includes/blank.jsp" />
+        <put-attribute name="mainAccesoRestringido" value="/WEB-INF/views/includes/acceso_restringido.jsp" /> 
+    </definition>
+    
+    <definition name="template-ventana" template="/WEB-INF/views/templates/ventana.jsp">        
+        <put-attribute name="mainContent" value="/WEB-INF/views/includes/blank.jsp" />
+    </definition>
+    
+    <definition name="lista-usuario" extends="template-main">
+        <put-attribute name="mainContent" value="/WEB-INF/views/usuario/lista.jsp" />
+    </definition>
+     
+    
+    <definition name="registrar-usuario" extends="template-main">
+        <put-attribute name="mainContent" value="/WEB-INF/views/usuario/registrar.jsp" />
+    </definition>
+     
+</tiles-definitions>
