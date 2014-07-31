@@ -66,8 +66,8 @@ public class CuartoVO extends BaseVO{
     @JoinColumn(name = "id_arrendatario", nullable = false, updatable = false)
     private ArrendatarioVO arrendatarioCuartoVO;
          
-     @OneToMany(fetch = FetchType.LAZY, mappedBy = "idCursoEspVO", cascade = CascadeType.ALL)
-    private List<AlquilarVO> listaOperacionVO = new ArrayList<AlquilarVO>();
+//     @OneToMany(fetch = FetchType.LAZY, mappedBy = "idCursoEspVO", cascade = CascadeType.ALL)
+//    private List<AlquilarVO> listaOperacionVO = new ArrayList<AlquilarVO>();
 
     
     public CuartoVO(){        
@@ -95,22 +95,16 @@ public class CuartoVO extends BaseVO{
         this.actCurEsp = actCurEsp;
     }
 
-    /**
-     * @return the listaOperacionVO
-     */
+    /*
     public List<AlquilarVO> getListaOperacionVO() {
         return listaOperacionVO;
     }
 
-    /**
-     * @param listaOperacionVO the listaOperacionVO to set
-     */
+   
     public void setListaOperacionVO(List<AlquilarVO> listaOperacionVO) {
         this.listaOperacionVO = listaOperacionVO;
     }
 
-    /**
-     * @return the idCuarto
      */
     public Integer getIdCuarto() {
         return idCuarto;
