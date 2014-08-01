@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pe.com.microdata.cjava.service.registro.GestionarCliente;
      
-import pe.com.microdata.cjava.service.registro.dto.AlumnoDTO;
+import pe.com.microdata.cjava.service.registro.dto.ClienteDTO;
 
 
 

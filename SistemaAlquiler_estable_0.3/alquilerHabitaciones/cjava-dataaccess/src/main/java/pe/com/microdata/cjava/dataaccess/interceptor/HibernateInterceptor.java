@@ -18,10 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pe.com.microdata.cjava.dataaccess.base.BaseVO;
 import pe.com.microdata.cjava.dataaccess.domain.log.LogDAO;
 
-/**
- *
- * @author Alejandra Gonzales
- */
+
 public class HibernateInterceptor extends EmptyInterceptor {
 
     @Autowired

@@ -25,13 +25,13 @@ public class ArrendatarioVO  extends BaseVO{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     @Column(name = "id_ins", unique = true, nullable = false)
-    private Integer idInstructor;
+    private Integer idArrendatario;
 
  
     ////////////////// one to one 
     @OneToOne(fetch= FetchType.LAZY, cascade= CascadeType.ALL,optional=false)
     @JoinColumn(name = "persona_id_per")
-    private PersonaVO instructorPersonaVO;
+    private PersonaVO arrendatarioPersonaVO;
 
     public ArrendatarioVO(){
      
@@ -40,25 +40,25 @@ public class ArrendatarioVO  extends BaseVO{
         public ArrendatarioVO(
                 PersonaVO instructorPersondaVO
             ){
-            this.instructorPersonaVO = instructorPersonaVO;
+            this.arrendatarioPersonaVO = arrendatarioPersonaVO;
         
      
     }    
 
     public Integer getIdInstructor() {
-        return idInstructor;
+        return idArrendatario;
     }
 
     public void setIdInstructor(Integer idInstructor) {
-        this.idInstructor = idInstructor;
+        this.idArrendatario = idInstructor;
     }
 
     public PersonaVO getInstructorPersonaVO() {
-        return instructorPersonaVO;
+        return arrendatarioPersonaVO;
     }
 
     public void setInstructorPersonaVO(PersonaVO instructorPersonaVO) {
-        this.instructorPersonaVO = instructorPersonaVO;
+        this.arrendatarioPersonaVO = instructorPersonaVO;
     }
     
  

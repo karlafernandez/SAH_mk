@@ -50,15 +50,15 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
     }
 
     @Override
-    public ArrendatarioVO obtenerInstructorPorIdInstructor(Integer idInstructor) {
+    public ArrendatarioVO obtenerInstructorPorIdInstructor(Integer idArrendatario) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
         ArrendatarioVO instructorVO = null;
-        detachedCriteria.createAlias("instructorPersonaVO", "instructorPersonaVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("instructorPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("instructorPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
 
-        detachedCriteria.add(Restrictions.eq("idInstructor", idInstructor));
+        detachedCriteria.add(Restrictions.eq("idArrendatario", idArrendatario));
         List<ArrendatarioVO> instructorVOs = new ArrayList<ArrendatarioVO>();
         instructorVOs = listByCriteria(detachedCriteria);
         if (!instructorVOs.isEmpty()) {
@@ -68,10 +68,10 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
     }
 
     @Override
-    public List obtenerInstructorPorIdInstructorLista(Integer idInstructor) {
+    public List obtenerInstructorPorIdInstructorLista(Integer idArrendatario) {
 
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
-        detachedCriteria.add(Restrictions.eq("idInstructor", idInstructor));
+        detachedCriteria.add(Restrictions.eq("idArrendatario", idArrendatario));
         List<ArrendatarioVO> usuarios = listByCriteria(detachedCriteria);
         return usuarios;
     }
@@ -81,9 +81,9 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
         ReglaDTO reglasDTO;
         Criterion c;
-        detachedCriteria.createAlias("instructorPersonaVO", "instructorPersonaVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("instructorPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("instructorPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
 
 
@@ -116,9 +116,9 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
     @Override
     public Long obtenerTotalInstructoresPorBusqueda(BusquedaDTO busquedaDTO) {//////////////CORREGIR///////////////////
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
-        detachedCriteria.createAlias("instructorPersonaVO", "instructorPersonaVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("instructorPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("instructorPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
         ProjectionList projList = Projections.projectionList();
         projList.add(Projections.countDistinct(("idInstructor")));
@@ -148,8 +148,8 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
         @Override
     public Boolean existeUsuario(String usuario) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
-        detachedCriteria.createAlias("instructorPersonaVO", "instructorPersonaVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.add(Restrictions.eq("instructorPersonaVO.usuarioPersona", usuario));
+        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.add(Restrictions.eq("arrendatarioPersonaVO.usuarioPersona", usuario));
         List<ArrendatarioVO> usuarios = listByCriteria(detachedCriteria);
         return !usuarios.isEmpty();
     }
@@ -160,11 +160,11 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
      @Override
     public List obtenerNombreDniInstructorPorBusqueda(String strBusqueda) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
-        detachedCriteria.createAlias("instructorPersonaVO", "instructorPersonaVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.add(Restrictions.conjunction().add(Restrictions.or(
-                Restrictions.ilike("instructorPersonaVO.nomPersona", "%" + strBusqueda + "%"),
-                Restrictions.or(Restrictions.ilike("instructorPersonaVO.primerApellidoPer", "%" + strBusqueda + "%"),
-                Restrictions.ilike("instructorPersonaVO.segundoApellidoPer", "%" + strBusqueda + "%")))));
+                Restrictions.ilike("arrendatarioPersonaVO.nomPersona", "%" + strBusqueda + "%"),
+                Restrictions.or(Restrictions.ilike("arrendatarioPersonaVO.primerApellidoPer", "%" + strBusqueda + "%"),
+                Restrictions.ilike("arrendatarioPersonaVO.segundoApellidoPer", "%" + strBusqueda + "%")))));
                      
         List<ArrendatarioVO> lstInstructor = new ArrayList();
         lstInstructor = listByCriteria(detachedCriteria);
@@ -175,8 +175,8 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
     public ArrendatarioVO obtenerInstructorPorIdPersona(Integer idPersona) {
         ArrendatarioVO vo = new ArrendatarioVO();
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
-        detachedCriteria.createAlias("instructorPersonaVO", "instructorPersonaVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.add(Restrictions.eq("instructorPersonaVO.idPersona", idPersona));
+        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.add(Restrictions.eq("arrendatarioPersonaVO.idPersona", idPersona));
         List<ArrendatarioVO> listInstruc = listByCriteria(detachedCriteria);
         if(!listInstruc.isEmpty())
             vo = listInstruc.get(0);

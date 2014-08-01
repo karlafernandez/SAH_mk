@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.com.microdata.cjava.common.base.ItemDTO;
-
 import pe.com.microdata.cjava.dataaccess.domain.administracion.curso.CuartoDAO;
-
 import pe.com.microdata.cjava.dataaccess.domain.administracion.persona.ClienteDAO;
 import pe.com.microdata.cjava.dataaccess.domain.administracion.persona.ArrendatarioDAO;
 import pe.com.microdata.cjava.dataaccess.domain.operacion.operacion.OperacionClienteDAO;
@@ -85,15 +82,15 @@ public class AutocompleteImpl implements Autocomplete {
             for (ClienteVO alumnoVO : objs) {
                 autocompleteDTO = new OperacionAlumnoDTO();
                 //autocompleteDTO.setNombreCompleto(alumnoVO.getAlumnoPersonaVO().getNomPersona()+""+alumnoVO.getAlumnoPersonaVO().getPrimerApellidoPer()+""+alumnoVO.getAlumnoPersonaVO().getSegundoApellidoPer());
-                autocompleteDTO.setNombre(alumnoVO.getAlumnoPersonaVO().getNomPersona());
-                autocompleteDTO.setPrimerApellido(alumnoVO.getAlumnoPersonaVO().getPrimerApellidoPer());
-                autocompleteDTO.setSegundoApellido(alumnoVO.getAlumnoPersonaVO().getSegundoApellidoPer());
-                autocompleteDTO.setDocumento(alumnoVO.getAlumnoPersonaVO().getDocumentoPer());
-                autocompleteDTO.setIdAlumno(alumnoVO.getIdAlumno());
+                autocompleteDTO.setNombre(alumnoVO.getClientePersonaVO().getNomPersona());
+                autocompleteDTO.setPrimerApellido(alumnoVO.getClientePersonaVO().getPrimerApellidoPer());
+                autocompleteDTO.setSegundoApellido(alumnoVO.getClientePersonaVO().getSegundoApellidoPer());
+                autocompleteDTO.setDocumento(alumnoVO.getClientePersonaVO().getDocumentoPer());
+                autocompleteDTO.setIdAlumno(alumnoVO.getIdCliente());
                 autocompleteDTO.setNombreCompleto(autocompleteDTO.getPrimerApellido() + " " + autocompleteDTO.getSegundoApellido() + " " + autocompleteDTO.getNombre());
-                autocompleteDTO.setDescripcion(alumnoVO.getAlumnoPersonaVO().getPrimerApellidoPer() + " "
-                        + alumnoVO.getAlumnoPersonaVO().getSegundoApellidoPer() + " "
-                        + alumnoVO.getAlumnoPersonaVO().getNomPersona());
+                autocompleteDTO.setDescripcion(alumnoVO.getClientePersonaVO().getPrimerApellidoPer() + " "
+                        + alumnoVO.getClientePersonaVO().getSegundoApellidoPer() + " "
+                        + alumnoVO.getClientePersonaVO().getNomPersona());
                 autoList.add(autocompleteDTO);
             }
         } else {

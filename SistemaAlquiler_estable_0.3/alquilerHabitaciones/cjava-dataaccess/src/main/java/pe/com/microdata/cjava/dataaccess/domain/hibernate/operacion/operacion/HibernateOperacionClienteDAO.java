@@ -33,31 +33,31 @@ public class HibernateOperacionClienteDAO extends HibernateGenericDAO<OperacionC
     public HibernateOperacionClienteDAO() {
         super(OperacionClienteVO.class);
         eq = new HashMap<String, ReglaDTO>();
-        eq.put("idOperacion", new ReglaDTO(Constants.OPE_EQ, Constants.TYPE_INTEGER, "idOperacionVO.idOperacion"));
-        eq.put("nomAlumno", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.nomPersona"));
-        eq.put("primerApe", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.primerApellidoPer"));
-        eq.put("segundoApe", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.segundoApellidoPer"));
+        eq.put("idAlquilar", new ReglaDTO(Constants.OPE_EQ, Constants.TYPE_INTEGER, "operacionVO.idAlquilar"));
+        eq.put("nomAlumno", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "clientePersonaVO.nomPersona"));
+        eq.put("primerApe", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "clientePersonaVO.primerApellidoPer"));
+        eq.put("segundoApe", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "clientePersonaVO.segundoApellidoPer"));
         eq.put("ubigeo", new ReglaDTO(Constants.OPE_LIKE_INICIO, Constants.TYPE_STRING, "ubigeosAsignados.representanteUbigeoId.ubigeo"));
         eq.put("fechaInicioOp", new ReglaDTO(Constants.OPE_GE, Constants.TYPE_DATE, "fechaInscripcionAlu"));
         eq.put("fechaFinOp", new ReglaDTO(Constants.OPE_LE, Constants.TYPE_DATE, "fechaInscripcionAlu"));
-        eq.put("idAlumno", new ReglaDTO(Constants.OPE_EQ, Constants.TYPE_INTEGER, "idAlumnoVO.idAlumno"));
+        eq.put("idCliente", new ReglaDTO(Constants.OPE_EQ, Constants.TYPE_INTEGER, "clienteVO.idCliente"));
         eq.put("nomOperacion", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "idCursoEspVO.nomCursoEspecifico"));
         eq.put("codOperacion", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "idOperacionVO.codigoOperacion"));
 
     }
 
+    /*
     @Override
-    public OperacionClienteVO obtenerOpeAlumnoPorIdOpeAlumno(Integer idOpeAlumno) {
+    public OperacionClienteVO obtenerOpeAlumnoPorIdOpeAlumno(Integer idOpeCliente) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(OperacionClienteVO.class);
         OperacionClienteVO operacionVO = null;
-        detachedCriteria.createAlias("idAlumnoVO", "idAlumnoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("idAlumnoVO.alumnoPersonaVO", "alumnoPersonaVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("clienteVO", "clienteVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("clienteVO.clientePersonaVO", "clientePersonaVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.createAlias("idOperacionVO", "idOperacionVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.createAlias("idOperacionVO.idEstadoVO", "idEstadoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("idSubTipoRegVO", "idSubTipoRegVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("idSubTipoEstadoVO", "idSubTipoEstadoVO", DetachedCriteria.LEFT_JOIN);
+              
 
-        detachedCriteria.add(Restrictions.eq("idOpeAlumno", idOpeAlumno));
+        detachedCriteria.add(Restrictions.eq("idOpeCliente", idOpeCliente));
         List<OperacionClienteVO> alumnoVOs = new ArrayList<OperacionClienteVO>();
         alumnoVOs = listByCriteria(detachedCriteria);
         if (!alumnoVOs.isEmpty()) {
@@ -69,7 +69,7 @@ public class HibernateOperacionClienteDAO extends HibernateGenericDAO<OperacionC
     @Override
     public List obtenerOpeAlumnoPorIdOpeAlumnoLista(Integer idOpeAlumno) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(OperacionClienteVO.class);
-        detachedCriteria.add(Restrictions.eq("idOpeAlumno", idOpeAlumno));
+        detachedCriteria.add(Restrictions.eq("idOpeCliente", idOpeAlumno));
         List<OperacionClienteVO> usuarios = listByCriteria(detachedCriteria);
         return usuarios;
     }
@@ -79,7 +79,7 @@ public class HibernateOperacionClienteDAO extends HibernateGenericDAO<OperacionC
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(OperacionClienteVO.class);
         OperacionClienteVO operacionVO = null;
         detachedCriteria.createAlias("idAlumnoVO", "idAlumnoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.add(Restrictions.eq("idOpeAlumno", idOpeAlumno));
+        detachedCriteria.add(Restrictions.eq("idOpeCliente", idOpeAlumno));
         List<OperacionClienteVO> alumnoVOs = new ArrayList<OperacionClienteVO>();
         alumnoVOs = listByCriteria(detachedCriteria);
         if (!alumnoVOs.isEmpty()) {
@@ -88,7 +88,7 @@ public class HibernateOperacionClienteDAO extends HibernateGenericDAO<OperacionC
         return operacionVO;
     }
 
-    /*
+  
      @Override
      public List<PersonaVO> obtenerPersonasPorNombre(String[] arrNombres) {
      DetachedCriteria detachedCriteria = DetachedCriteria.forClass(PersonaVO.class);
@@ -100,7 +100,7 @@ public class HibernateOperacionClienteDAO extends HibernateGenericDAO<OperacionC
 
      List<PersonaVO> usuarios = listByCriteria(detachedCriteria);
      return usuarios;
-     }*/
+     }
     @Override
     public List<OperacionClienteVO> obtenerOpeAlumnoPorBusqueda(BusquedaDTO busquedaDTO) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(OperacionClienteVO.class);
@@ -148,7 +148,8 @@ public class HibernateOperacionClienteDAO extends HibernateGenericDAO<OperacionC
         if (busquedaDTO != null && busquedaDTO.getCondiciones() != null) {
             for (CondicionDTO regla : busquedaDTO.getCondiciones()) {
                 if (Validador.noNuloNoVacio(regla.getData())) {
-                    if (eq.containsKey(regla.getField())) {
+             
+    if (eq.containsKey(regla.getField())) {
                         reglasDTO = eq.get(regla.getField());
                         reglasDTO.setData(regla.getData());
                         c = GeneradorRestricciones.generar(reglasDTO);
@@ -440,5 +441,5 @@ public class HibernateOperacionClienteDAO extends HibernateGenericDAO<OperacionC
             b = true;
         }
         return b;
-    }
+    }*/
 }

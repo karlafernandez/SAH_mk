@@ -12,10 +12,6 @@ import pe.com.microdata.cjava.dataaccess.base.hibernate.HibernateGenericDAO;
 import pe.com.microdata.cjava.dataaccess.domain.acceso.AccesoTemplateDAO;
 import pe.com.microdata.cjava.dataaccess.model.acceso.AccesoTemplateVO;
 
-/**
- *
- * @author Alejandra Gonzales
- */
 public class HibernateAccesoTemplateDAO extends HibernateGenericDAO<AccesoTemplateVO, Integer>
         implements AccesoTemplateDAO {
 

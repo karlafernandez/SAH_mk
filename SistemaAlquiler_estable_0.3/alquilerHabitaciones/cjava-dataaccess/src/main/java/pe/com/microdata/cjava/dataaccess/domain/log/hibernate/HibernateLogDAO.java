@@ -22,10 +22,7 @@ import pe.com.microdata.cjava.dataaccess.domain.log.LogDAO;
 import pe.com.microdata.cjava.dataaccess.model.log.LogVO;
 import pe.com.microdata.cjava.dataaccess.util.GeneradorRestricciones;
 
-/**
- *
- * @author Alejandra Gonzales
- */
+
 public class HibernateLogDAO extends HibernateGenericDAO<LogVO, Integer>
         implements LogDAO {
 

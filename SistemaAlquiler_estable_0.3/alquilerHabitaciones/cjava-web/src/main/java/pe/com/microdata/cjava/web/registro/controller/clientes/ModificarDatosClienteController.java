@@ -20,7 +20,7 @@ import pe.com.microdata.cjava.common.base.SIGAMessage;
 
 import pe.com.microdata.cjava.service.gestionar_listas.GestionarListas;
 import pe.com.microdata.cjava.service.registro.GestionarCliente;
-import pe.com.microdata.cjava.service.registro.dto.AlumnoDTO;
+import pe.com.microdata.cjava.service.registro.dto.ClienteDTO;
 import pe.com.microdata.cjava.service.registro.validador.ModificarClienteValidador;
 import pe.com.microdata.cjava.web.base.BaseController;
 
@@ -50,8 +50,8 @@ public class ModificarDatosClienteController extends BaseController {
     
 
     @ModelAttribute(ID_ALUMNO)
-    public AlumnoDTO modelo(Model model) {
-        return new AlumnoDTO();
+    public ClienteDTO modelo(Model model) {
+        return new ClienteDTO();
     }
 
     @ModelAttribute(TIPO_DOCUMENTO)
@@ -83,14 +83,14 @@ public class ModificarDatosClienteController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String vista(ModelMap model, HttpServletRequest request, @RequestParam(ID_ALUMNO) Integer idAlumno) {
-        AlumnoDTO promotor = gestionarAlumno.obtenerAlumnoPorId(idAlumno);
+        ClienteDTO promotor = gestionarAlumno.obtenerAlumnoPorId(idAlumno);
 
         model.addAttribute(ALUMNO, promotor);
         return NOREDIRECCIONAR;
     }
    
     @RequestMapping(params = "guardar", method = RequestMethod.POST)
-    public String modificarDatos(@ModelAttribute(ALUMNO) AlumnoDTO dto,
+    public String modificarDatos(@ModelAttribute(ALUMNO) ClienteDTO dto,
             HttpServletRequest request, HttpSession session, ModelMap model, BindingResult result) {
         String view = NOREDIRECCIONAR;
         SIGAMessage m = new SIGAMessage();

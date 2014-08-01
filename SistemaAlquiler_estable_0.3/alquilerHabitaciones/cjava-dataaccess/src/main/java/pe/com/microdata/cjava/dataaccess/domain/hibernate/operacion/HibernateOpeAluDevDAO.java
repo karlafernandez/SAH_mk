@@ -4,10 +4,7 @@
  */
 package pe.com.microdata.cjava.dataaccess.domain.hibernate.operacion;
 
-/**
- *
- * @author César Bragagnini
- */
+
 public class HibernateOpeAluDevDAO {
     
 }

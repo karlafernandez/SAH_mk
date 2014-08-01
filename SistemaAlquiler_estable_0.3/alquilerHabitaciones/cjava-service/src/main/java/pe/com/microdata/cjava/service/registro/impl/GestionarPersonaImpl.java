@@ -20,12 +20,9 @@ import pe.com.microdata.cjava.dataaccess.model.administracion.persona.PersonaVO;
 import pe.com.microdata.cjava.service.acceso.dto.UsuarioSeguridadDTO;
 import pe.com.microdata.cjava.service.base.dto.UserDetailsDTO;
 import pe.com.microdata.cjava.service.registro.GestionarPersona;
-import pe.com.microdata.cjava.service.registro.dto.CumpleanioDTO;
 
-/**
- *
- * @author Alejandra Gonzales
- */
+
+
 @Service("gestionarPersona")
 public class GestionarPersonaImpl implements GestionarPersona {
 
@@ -101,27 +98,6 @@ public class GestionarPersonaImpl implements GestionarPersona {
         return dto;                                
     }
 
-    @Override
-    public List<CumpleanioDTO> obtenerListaCumpleanio() {        
-        List<CumpleanioDTO> listaDTO = new ArrayList<CumpleanioDTO>();               
-        try {
-            Calendar actual = Calendar.getInstance();
-            Integer month = actual.get(Calendar.MONTH) + 1;            
-            List<PersonaVO> listaVO = personaDAO.obtenerListaCumpleanio(month);         
-            for(PersonaVO vo : listaVO){
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(vo.getFechaNacimientoPer());
-                int dia = cal.get(Calendar.DATE);                
-                CumpleanioDTO itemDTO = new CumpleanioDTO();                                
-                itemDTO.setNombreCompleto(vo.getPrimerApellidoPer() + " " + vo.getSegundoApellidoPer() + " " + vo.getNomPersona());
-                itemDTO.setCargo(vo.getTipoUserVO().getDesSubtipo());                               
-                itemDTO.setFecha(dia + " de " + arrayMes[month.intValue() - 1]);
-                listaDTO.add(itemDTO);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();                   
-        }                                             
-        return listaDTO;
-    }
+   
                       
 }

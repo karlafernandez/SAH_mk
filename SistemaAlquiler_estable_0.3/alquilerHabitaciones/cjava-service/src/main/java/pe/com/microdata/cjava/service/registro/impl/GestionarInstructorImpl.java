@@ -34,7 +34,7 @@ import pe.com.microdata.cjava.dataaccess.model.administracion.persona.UbigeoVO;
 import pe.com.microdata.cjava.service.mail.MailService;
 import pe.com.microdata.cjava.service.mail.dto.MailParametersDTO;
 import pe.com.microdata.cjava.service.registro.GestionarInstructor;
-import pe.com.microdata.cjava.service.registro.dto.InstructorDTO;
+import pe.com.microdata.cjava.service.registro.dto.ArrendatarioDTO;
 
 /**
  *
@@ -63,7 +63,7 @@ public class GestionarInstructorImpl implements GestionarInstructor {
     private static final Logger logger = Logger.getLogger(GestionarInstructorImpl.class.getName());
     
     @Override
-    public SIGAMessage registrarInstructor(InstructorDTO instructorDTO) {
+    public SIGAMessage registrarInstructor(ArrendatarioDTO instructorDTO) {
 
         SIGAMessage msg = new SIGAMessage();
         msg.setSuccess(Boolean.FALSE);
@@ -155,9 +155,9 @@ public class GestionarInstructorImpl implements GestionarInstructor {
     }
 
     @Override
-    public InstructorDTO obtenerInstructorPorId(Integer idInstructor) {
+    public ArrendatarioDTO obtenerInstructorPorId(Integer idInstructor) {
 
-        InstructorDTO instructorDTO = new InstructorDTO();
+        ArrendatarioDTO instructorDTO = new ArrendatarioDTO();
         ArrendatarioVO instructorVO = instructorDAO.obtenerInstructorPorIdInstructor(idInstructor);
         //  List<PersonaVO> personaVOs = personaDAO.obtenerPersonasPorBusqueda(busquedaDTO);
         PersonaVO personaVO;
@@ -194,7 +194,7 @@ public class GestionarInstructorImpl implements GestionarInstructor {
     }
 
     @Override
-    public SIGAMessage modificarInstructor(InstructorDTO instructorDTO) {
+    public SIGAMessage modificarInstructor(ArrendatarioDTO instructorDTO) {
 
         SIGAMessage msg = new SIGAMessage();
         msg.setSuccess(Boolean.FALSE);
@@ -256,13 +256,13 @@ public class GestionarInstructorImpl implements GestionarInstructor {
 
     @Override
     public List obtenerInstructorPorBusqueda(BusquedaDTO busquedaDTO) {
-        List<InstructorDTO> instructorDTOs = new ArrayList<InstructorDTO>();
+        List<ArrendatarioDTO> instructorDTOs = new ArrayList<ArrendatarioDTO>();
         List<ArrendatarioVO> instructorVOs = instructorDAO.obtenerInstructorPorBusqueda(busquedaDTO);
 
         PersonaVO personaVO;
 
         for (ArrendatarioVO instructorVO : instructorVOs) {
-            InstructorDTO instructorDTO = new InstructorDTO();
+            ArrendatarioDTO instructorDTO = new ArrendatarioDTO();
             //////////////////////////////ALUMNO VO//////////////////////
             instructorDTO.setIdInstructor(instructorVO.getIdInstructor());
 

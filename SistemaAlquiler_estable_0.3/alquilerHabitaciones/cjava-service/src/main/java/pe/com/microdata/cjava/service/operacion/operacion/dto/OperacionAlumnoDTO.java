@@ -6,7 +6,7 @@ package pe.com.microdata.cjava.service.operacion.operacion.dto;
 
 import java.util.List;
 
-import pe.com.microdata.cjava.service.registro.dto.AlumnoDTO;
+import pe.com.microdata.cjava.service.registro.dto.ClienteDTO;
 
 /**
  *
@@ -32,7 +32,7 @@ public class OperacionAlumnoDTO {
     private String segundoApellido;
     private String nombreCompleto;
     private String documento;
-    private List<AlumnoDTO> lstAlumnos;
+    private List<ClienteDTO> lstAlumnos;
 
     private Integer porcentajeAsistencia;
     private String descripcion;
@@ -125,11 +125,11 @@ public class OperacionAlumnoDTO {
         this.idEstado = idEstado;
     }
 
-    public List<AlumnoDTO> getLstAlumnos() {
+    public List<ClienteDTO> getLstAlumnos() {
         return lstAlumnos;
     }
 
-    public void setLstAlumnos(List<AlumnoDTO> lstAlumnos) {
+    public void setLstAlumnos(List<ClienteDTO> lstAlumnos) {
         this.lstAlumnos = lstAlumnos;
     }
 

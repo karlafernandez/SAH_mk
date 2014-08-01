@@ -11,10 +11,7 @@ import pe.com.microdata.cjava.dataaccess.base.hibernate.HibernateGenericDAO;
 import pe.com.microdata.cjava.dataaccess.domain.operacion.operacion.FrecuenciaDiaDAO;
 import pe.com.microdata.cjava.dataaccess.model.operacion.alquilado.FrecuenciaDiaVO;
 
-/**
- *
- * @author robert
- */
+
 public class HibernateFrecuenciaDiaDAO extends HibernateGenericDAO<FrecuenciaDiaVO, Integer> implements FrecuenciaDiaDAO{
 
     public HibernateFrecuenciaDiaDAO() {

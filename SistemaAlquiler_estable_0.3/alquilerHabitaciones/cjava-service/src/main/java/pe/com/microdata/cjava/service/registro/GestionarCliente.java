@@ -6,7 +6,7 @@ package pe.com.microdata.cjava.service.registro;
 
 import java.util.List;
 
-import pe.com.microdata.cjava.service.registro.dto.AlumnoDTO;
+import pe.com.microdata.cjava.service.registro.dto.ClienteDTO;
 import pe.com.microdata.cjava.common.base.BusquedaDTO;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
 import pe.com.microdata.cjava.service.registro.dto.HistorialCursoDTO;
@@ -18,15 +18,15 @@ import pe.com.microdata.cjava.service.registro.dto.HistorialCursoDTO;
  */
 public interface GestionarCliente {
 
-    public SIGAMessage registrarAlumno(AlumnoDTO alumnoDTO);
+    public SIGAMessage registrarAlumno(ClienteDTO alumnoDTO);
 
-    public SIGAMessage modificarAlumno(AlumnoDTO alumnoDTO);
+    public SIGAMessage modificarAlumno(ClienteDTO alumnoDTO);
 
     public void eliminarAlumno(Integer alumno);
 
-    public AlumnoDTO obtenerAlumnoPorId(Integer idPersona);
+    public ClienteDTO obtenerAlumnoPorId(Integer idPersona);
 
-    public AlumnoDTO obtenerCodigoAutogenerado(BusquedaDTO busquedaDTO);
+    public ClienteDTO obtenerCodigoAutogenerado(BusquedaDTO busquedaDTO);
 
    // public HistorialCursoDTO obtenerHistorialCursoPorIdAlumno(Integer idAlum);
 

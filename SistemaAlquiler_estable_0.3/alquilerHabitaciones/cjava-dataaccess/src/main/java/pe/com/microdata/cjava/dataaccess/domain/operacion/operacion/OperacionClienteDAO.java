@@ -7,7 +7,7 @@ import pe.com.microdata.cjava.common.base.BusquedaDTO;
 import pe.com.microdata.cjava.dataaccess.model.operacion.alquilado.OperacionClienteVO;
 
 public interface OperacionClienteDAO extends GenericDAO<OperacionClienteVO, Integer> {
-
+/*
     public OperacionClienteVO obtenerOpeAlumnoPorIdOpeAlumno(Integer idOpeAlumno);
 
     public List obtenerOpeAlumnoPorIdOpeAlumnoLista(Integer idOpeAlumno);
@@ -40,9 +40,10 @@ public interface OperacionClienteDAO extends GenericDAO<OperacionClienteVO, Inte
 
     public OperacionClienteVO obtenerOpeAlumnoPorIdOperacionyIdAlumno(Integer idOperacion, Integer idAlumno);
     
-    /*Record de Estudiantes*/
+   
     
     public  List<OperacionClienteVO> obtenerOpeAlumnosRecordPorBusqueda(BusquedaDTO busquedaDTO);
     
     public  Boolean existeOpeAlumnosRecordPorBusqueda(BusquedaDTO busquedaDTO);
-}
+*/
+    }

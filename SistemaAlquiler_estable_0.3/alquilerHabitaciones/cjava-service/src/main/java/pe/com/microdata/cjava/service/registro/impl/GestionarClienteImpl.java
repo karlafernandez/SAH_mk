@@ -33,7 +33,7 @@ import pe.com.microdata.cjava.dataaccess.model.operacion.alquilado.OperacionClie
 import pe.com.microdata.cjava.service.mail.MailService;
 import pe.com.microdata.cjava.service.mail.dto.MailParametersDTO;
 import pe.com.microdata.cjava.service.registro.GestionarCliente;
-import pe.com.microdata.cjava.service.registro.dto.AlumnoDTO;
+import pe.com.microdata.cjava.service.registro.dto.ClienteDTO;
 import pe.com.microdata.cjava.service.registro.dto.HistorialCursoDTO;
 import pe.com.microdata.cjava.service.registro.dto.ItemCursoHistorialDTO;
 
@@ -58,7 +58,7 @@ public class GestionarClienteImpl implements GestionarCliente {
     private Logger logger = Logger.getLogger(GestionarClienteImpl.class.getCanonicalName());
 
     @Override
-    public SIGAMessage registrarAlumno(AlumnoDTO alumnoDTO) {
+    public SIGAMessage registrarAlumno(ClienteDTO alumnoDTO) {
         SIGAMessage msg = new SIGAMessage();
         msg.setSuccess(Boolean.FALSE);
         PersonaVO personaVO = new PersonaVO();
@@ -93,20 +93,9 @@ public class GestionarClienteImpl implements GestionarCliente {
             personaVO.setPassPersona(EncriptacionUtil.encriptar(password));
             //////////////////////////////ALUMNO VO/////////////////////////////
             ClienteVO alumnoVO = new ClienteVO();
-            if (alumnoDTO.getIdCentroEdu() != 0) {
-                alumnoVO.setCentroEducativo(new SubTipoVO(alumnoDTO.getIdCentroEdu()));
-            }
-            alumnoVO.setInstitucionAlumno(alumnoDTO.getInstitucion());
-            if (alumnoDTO.getIdNivelEstudio() != 0) {
-                alumnoVO.setNivelEstudio(new SubTipoVO(alumnoDTO.getIdNivelEstudio()));
-            }
-            if (alumnoDTO.getIdOcupacion() != 0) {
-                alumnoVO.setOcupacion(new SubTipoVO(alumnoDTO.getIdOcupacion()));
-            }
-            alumnoVO.setCentroTrabajoAlumno(alumnoDTO.getCentroTrabajo());
+            
             alumnoVO.setCorreoFaceAlumno(alumnoDTO.getCorreoFace());
-            alumnoVO.setCorreoLinkeAlumno(alumnoDTO.getCorreoLinke());
-            alumnoVO.setAlumnoPersonaVO(personaVO);
+           
             Integer idAlumno = alumnoDAO.insert(alumnoVO);
             if (idAlumno != 0) {
                 obtenerCodigoAlumno(idAlumno);
@@ -139,28 +128,24 @@ public class GestionarClienteImpl implements GestionarCliente {
         String annio = Integer.toString(c.get(Calendar.YEAR));
         PersonaVO personaVO = new PersonaVO();
         ClienteVO alumnoVO = alumnoDAO.obtenerAlumnoPorIdAlumno(idAlumno);
-        personaVO = alumnoVO.getAlumnoPersonaVO();
+        personaVO = alumnoVO.getClientePersonaVO();
         personaVO.setCodigo(annio + "-" + idAlumno.toString());
         personaDAO.saveOrUpdate(personaVO);
     }
 
     @Override
-    public AlumnoDTO obtenerAlumnoPorId(Integer idAlumno) {
+    public ClienteDTO obtenerAlumnoPorId(Integer idAlumno) {
 
-        AlumnoDTO alumnoDTO = new AlumnoDTO();
+        ClienteDTO alumnoDTO = new ClienteDTO();
         ClienteVO alumnoVO = alumnoDAO.obtenerAlumnoPorIdAlumno(idAlumno);
         PersonaVO personaVO;
         //////////////////////////////ALUMNO VO/////////////////////////////
-        alumnoDTO.setIdAlumno(alumnoVO.getIdAlumno());
-        alumnoDTO.setIdCentroEdu(alumnoVO.getCentroEducativo() != null ? alumnoVO.getCentroEducativo().getIdSubTipo() : 0);
-        alumnoDTO.setInstitucion(alumnoVO.getInstitucionAlumno());
-        alumnoDTO.setIdNivelEstudio(alumnoVO.getNivelEstudio() != null ? alumnoVO.getNivelEstudio().getIdSubTipo() : 0);
-        alumnoDTO.setCentroTrabajo(alumnoVO.getCentroTrabajoAlumno());
+     
         alumnoDTO.setCorreoFace(alumnoVO.getCorreoFaceAlumno());
-        alumnoDTO.setCorreoLinke(alumnoVO.getCorreoLinkeAlumno());
-        alumnoDTO.setIdOcupacion(alumnoVO.getOcupacion() != null ? alumnoVO.getOcupacion().getIdSubTipo() : 0);
+       
+       
         /////////////////////////PERSONA /////////////////////////
-        personaVO = alumnoVO.getAlumnoPersonaVO();
+        personaVO = alumnoVO.getClientePersonaVO();
         alumnoDTO.setNombre(personaVO.getNomPersona());
         alumnoDTO.setPrimerApellido(personaVO.getPrimerApellidoPer());
         alumnoDTO.setSegundoApellido(personaVO.getSegundoApellidoPer());
@@ -189,7 +174,7 @@ public class GestionarClienteImpl implements GestionarCliente {
     }
 
     @Override
-    public SIGAMessage modificarAlumno(AlumnoDTO alumnoDTO) {
+    public SIGAMessage modificarAlumno(ClienteDTO alumnoDTO) {
 
         SIGAMessage msg = new SIGAMessage();
         msg.setSuccess(Boolean.FALSE);
@@ -226,20 +211,9 @@ public class GestionarClienteImpl implements GestionarCliente {
         personaVO.setTipoUserVO(new SubTipoVO(Constants.SUBTIPO_USER_ALUMNO));
         personaDAO.saveOrUpdate(personaVO);
         //////////////////////////////ALUMNO VO/////////////////////////////
-        if (alumnoDTO.getIdCentroEdu().intValue() != 0) {
-            alumnoVO.setCentroEducativo(new SubTipoVO(alumnoDTO.getIdCentroEdu()));
-        }
-        if (alumnoDTO.getIdNivelEstudio() != 0) {
-            alumnoVO.setNivelEstudio(new SubTipoVO(alumnoDTO.getIdNivelEstudio()));
-        }
-        if (alumnoDTO.getIdOcupacion() != 0) {
-            alumnoVO.setOcupacion(new SubTipoVO(alumnoDTO.getIdOcupacion()));
-        }
-        alumnoVO.setInstitucionAlumno(alumnoDTO.getInstitucion());
-        alumnoVO.setCentroTrabajoAlumno(alumnoDTO.getCentroTrabajo());
+        
         alumnoVO.setCorreoFaceAlumno(alumnoDTO.getCorreoFace());
-        alumnoVO.setCorreoLinkeAlumno(alumnoDTO.getCorreoLinke());
-        alumnoVO.setAlumnoPersonaVO(personaVO);
+       
         alumnoDAO.saveOrUpdate(alumnoVO);
         
         msg.setSuccess(Boolean.TRUE);
@@ -254,22 +228,17 @@ public class GestionarClienteImpl implements GestionarCliente {
 
     @Override
     public List obtenerAlumnoPorBusqueda(BusquedaDTO busquedaDTO) {
-        List<AlumnoDTO> alumnoDTOs = new ArrayList<AlumnoDTO>();
+        List<ClienteDTO> alumnoDTOs = new ArrayList<ClienteDTO>();
         List<ClienteVO> alumnoVOs = alumnoDAO.obtenerAlumnosPorBusqueda(busquedaDTO);
         PersonaVO personaVO;
         
         for (ClienteVO alumnoVO : alumnoVOs) {
-            AlumnoDTO alumnoDTO = new AlumnoDTO();
-            alumnoDTO.setIdAlumno(alumnoVO.getIdAlumno());
-            alumnoDTO.setIdCentroEdu(alumnoVO.getCentroEducativo() != null ? alumnoVO.getCentroEducativo().getIdSubTipo() : 0);
-            alumnoDTO.setInstitucion(alumnoVO.getInstitucionAlumno());
-            alumnoDTO.setIdNivelEstudio(alumnoVO.getNivelEstudio() != null ? alumnoVO.getNivelEstudio().getIdSubTipo() : 0);
-            alumnoDTO.setIdOcupacion(alumnoVO.getOcupacion() != null ? alumnoVO.getOcupacion().getIdSubTipo() : 0);
-            alumnoDTO.setCentroTrabajo(alumnoVO.getCentroTrabajoAlumno());
+            ClienteDTO alumnoDTO = new ClienteDTO();
+  
             alumnoDTO.setCorreoFace(alumnoVO.getCorreoFaceAlumno());
-            alumnoDTO.setCorreoLinke(alumnoVO.getCorreoLinkeAlumno());
+        
             /////////////////////////PERSONA /////////////////////////
-            personaVO = alumnoVO.getAlumnoPersonaVO();
+            personaVO = alumnoVO.getClientePersonaVO();
             alumnoDTO.setNombre(personaVO.getNomPersona());
             alumnoDTO.setPrimerApellido(personaVO.getPrimerApellidoPer());
             alumnoDTO.setSegundoApellido(personaVO.getSegundoApellidoPer());
@@ -301,27 +270,27 @@ public class GestionarClienteImpl implements GestionarCliente {
     }
 
     @Override
-    public AlumnoDTO obtenerCodigoAutogenerado(BusquedaDTO busquedaDTO) {
+    public ClienteDTO obtenerCodigoAutogenerado(BusquedaDTO busquedaDTO) {
         Long pretotal = alumnoDAO.obtenerTotalAlumnosPorBusqueda(busquedaDTO);
         int intValue = pretotal.intValue();
         Integer codigo = intValue + 1;
-        AlumnoDTO alumno = new AlumnoDTO();
+        ClienteDTO alumno = new ClienteDTO();
         alumno.setCodigo(codigo.toString());
         return alumno;
     }
 
     @Override
     public List obtenerTotalAlumnos() {
-        List<AlumnoDTO> alumnoDTOs = new ArrayList<AlumnoDTO>();
+        List<ClienteDTO> alumnoDTOs = new ArrayList<ClienteDTO>();
         List<ClienteVO> alumnoVOs = alumnoDAO.obtenerTotalAlumnos();
         PersonaVO personaVO;
         for (ClienteVO alumnoVO : alumnoVOs) {
-            AlumnoDTO alumnoDTO = new AlumnoDTO();
+            ClienteDTO alumnoDTO = new ClienteDTO();
             //////////////////////////////ALUMNO VO//////////////////////
-            alumnoDTO.setIdAlumno(alumnoVO.getIdAlumno());
+            alumnoDTO.setIdAlumno(alumnoVO.getIdCliente());
 
             /////////////////////////PERSONA /////////////////////////
-            personaVO = alumnoVO.getAlumnoPersonaVO();
+            personaVO = alumnoVO.getClientePersonaVO();
             alumnoDTO.setNombre(personaVO.getNomPersona());
             alumnoDTO.setPrimerApellido(personaVO.getPrimerApellidoPer());
             alumnoDTO.setSegundoApellido(personaVO.getSegundoApellidoPer());

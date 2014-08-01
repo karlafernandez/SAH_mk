@@ -26,7 +26,7 @@
 
     <!--      /////////////        CUARTO         /////////////////////   -->
 
-    <bean id="cuartoDAO" class="pe.com.microdata.cjava.dataaccess.domain.hibernate.administracion.curso.HibernateCuartoDAO">
+    <bean id="cuartoDAO" class="pe.com.microdata.cjava.dataaccess.domain.hibernate.administracion.cuarto.HibernateCuartoDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>    
           

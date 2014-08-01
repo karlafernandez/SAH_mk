@@ -12,10 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import pe.com.microdata.cjava.dataaccess.base.BaseVO;
 
-/**
- *
- * @author César Bragagnini
- */
 @Entity
 @Table(name = "frecuencia_dia")
 public class FrecuenciaDiaVO  extends BaseVO {

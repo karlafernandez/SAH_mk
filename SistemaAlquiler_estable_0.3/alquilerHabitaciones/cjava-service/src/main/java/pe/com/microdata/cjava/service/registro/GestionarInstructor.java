@@ -8,7 +8,7 @@ import java.util.List;
 import pe.com.microdata.cjava.common.base.BusquedaDTO;
  
 import pe.com.microdata.cjava.common.base.SIGAMessage;
-import pe.com.microdata.cjava.service.registro.dto.InstructorDTO;
+import pe.com.microdata.cjava.service.registro.dto.ArrendatarioDTO;
 
 /**
  *
@@ -16,11 +16,11 @@ import pe.com.microdata.cjava.service.registro.dto.InstructorDTO;
  */
 public interface GestionarInstructor {
 
-    public SIGAMessage registrarInstructor(InstructorDTO instructorDTO);
+    public SIGAMessage registrarInstructor(ArrendatarioDTO instructorDTO);
 
-    public InstructorDTO obtenerInstructorPorId(Integer idInstructor);
+    public ArrendatarioDTO obtenerInstructorPorId(Integer idInstructor);
 
-    public SIGAMessage modificarInstructor(InstructorDTO instructorDTO);
+    public SIGAMessage modificarInstructor(ArrendatarioDTO instructorDTO);
 
     public void eliminarInstructor(Integer instructor);
     

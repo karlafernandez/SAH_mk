@@ -43,11 +43,11 @@ public class OperacionClienteVO extends BaseVO {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "operacion_id_ope", nullable = true, updatable = false)
-    private AlquilarVO idOperacionVO;
+    private AlquilarVO operacionVO;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id_cli", nullable = true, updatable = false)
-    private ClienteVO idClienteVO;
+    private ClienteVO clienteVO;
 
  
  
@@ -57,14 +57,7 @@ public class OperacionClienteVO extends BaseVO {
   
 
    
-    public AlquilarVO getIdOperacionVO() {
-        return idOperacionVO;
-    }
-
-    public void setIdOperacionVO(AlquilarVO idOperacionVO) {
-        this.idOperacionVO = idOperacionVO;
-    }
-
+   
     /**
      * @return the idOpeCliente
      */
@@ -94,20 +87,37 @@ public class OperacionClienteVO extends BaseVO {
     }
 
     /**
-     * @return the idClienteVO
+     * @return the clienteVO
      */
-    public ClienteVO getIdClienteVO() {
-        return idClienteVO;
+    public ClienteVO getClienteVO() {
+        return clienteVO;
     }
 
     /**
-     * @param idClienteVO the idClienteVO to set
+     * @param clienteVO the clienteVO to set
      */
-    public void setIdClienteVO(ClienteVO idClienteVO) {
-        this.idClienteVO = idClienteVO;
+    public void setClienteVO(ClienteVO clienteVO) {
+        this.clienteVO = clienteVO;
     }
 
+    /**
+     * @return the operacionVO
+     */
+    public AlquilarVO getOperacionVO() {
+        return operacionVO;
+    }
 
+    /**
+     * @param operacionVO the operacionVO to set
+     */
+    public void setOperacionVO(AlquilarVO operacionVO) {
+        this.operacionVO = operacionVO;
+    }
+
+    /**
+     * @return the idClienteVO
+     */
+  
 
  
 

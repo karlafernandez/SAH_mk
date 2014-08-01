@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
 import pe.com.microdata.cjava.service.registro.GestionarCliente;
 import pe.com.microdata.cjava.service.gestionar_listas.GestionarListas;
-import pe.com.microdata.cjava.service.registro.dto.AlumnoDTO;
+import pe.com.microdata.cjava.service.registro.dto.ClienteDTO;
 import pe.com.microdata.cjava.common.base.BusquedaDTO;
 import pe.com.microdata.cjava.service.registro.validador.RegistrarClienteValidador;
 import pe.com.microdata.cjava.web.base.BaseController;
@@ -49,8 +49,8 @@ public class RegistrarClientesController extends BaseController {
     RegistrarClienteValidador alumnoValidador;
 
     @ModelAttribute(REGISTRO_DATOS)
-    public AlumnoDTO modelo(Model model) {
-        return new AlumnoDTO();
+    public ClienteDTO modelo(Model model) {
+        return new ClienteDTO();
     }
     
     @ModelAttribute(BUSQUEDA)
@@ -96,7 +96,7 @@ public class RegistrarClientesController extends BaseController {
 
 
     @RequestMapping(params = "guardar", method = RequestMethod.POST)
-    public String registrarAlumno(@Valid @ModelAttribute(REGISTRO_DATOS) AlumnoDTO alumnoDTO,
+    public String registrarAlumno(@Valid @ModelAttribute(REGISTRO_DATOS) ClienteDTO alumnoDTO,
             BindingResult result, HttpServletRequest request, Model model) {
 
         String view = NOREDIRECCIONAR;

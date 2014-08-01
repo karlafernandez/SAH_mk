@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
 import pe.com.microdata.cjava.service.gestionar_listas.GestionarListas;
 import pe.com.microdata.cjava.service.registro.GestionarInstructor;
-import pe.com.microdata.cjava.service.registro.dto.InstructorDTO;
-import pe.com.microdata.cjava.service.registro.validador.RegistrarInstructorValidador;
+import pe.com.microdata.cjava.service.registro.dto.ArrendatarioDTO;
+import pe.com.microdata.cjava.service.registro.validador.RegistrarArrendatarioValidador;
 import pe.com.microdata.cjava.web.base.BaseController;
 
 /**
@@ -40,13 +40,13 @@ public class RegistrarArrendatariosController extends BaseController {
     @Autowired
     GestionarInstructor gestionarInstructor;
     @Autowired
-    RegistrarInstructorValidador instructorValidador;
+    RegistrarArrendatarioValidador instructorValidador;
     @Autowired
     GestionarListas gestionarListas;
     
     @ModelAttribute(REGISTRO_DATOS)
-    public InstructorDTO modelo(Model model) {
-        return new InstructorDTO();
+    public ArrendatarioDTO modelo(Model model) {
+        return new ArrendatarioDTO();
     }
     
      @ModelAttribute(TIPO_DOCUMENTO)
@@ -70,7 +70,7 @@ public class RegistrarArrendatariosController extends BaseController {
     }
 
     @RequestMapping(params = "guardar", method = RequestMethod.POST)
-    public String registrarInstructor(@Valid @ModelAttribute(REGISTRO_DATOS) InstructorDTO instructorDTO,
+    public String registrarInstructor(@Valid @ModelAttribute(REGISTRO_DATOS) ArrendatarioDTO instructorDTO,
             BindingResult result, HttpServletRequest request, Model model) {
 
         String view = NOREDIRECCIONAR;

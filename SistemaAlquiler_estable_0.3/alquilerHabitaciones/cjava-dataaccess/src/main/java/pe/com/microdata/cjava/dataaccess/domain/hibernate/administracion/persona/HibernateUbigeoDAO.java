@@ -11,10 +11,7 @@ import pe.com.microdata.cjava.dataaccess.base.hibernate.HibernateGenericDAO;
 import pe.com.microdata.cjava.dataaccess.domain.administracion.persona.UbigeoDAO;
 import pe.com.microdata.cjava.dataaccess.model.administracion.persona.UbigeoVO;
 
-/**
- *
- * @author Alejandra Gonzales
- */
+
 public class HibernateUbigeoDAO extends HibernateGenericDAO<UbigeoVO, Integer>
         implements UbigeoDAO {
 

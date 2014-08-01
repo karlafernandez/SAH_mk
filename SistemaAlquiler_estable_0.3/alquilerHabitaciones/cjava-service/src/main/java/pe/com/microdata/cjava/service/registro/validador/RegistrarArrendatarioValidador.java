@@ -10,32 +10,32 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import pe.com.microdata.cjava.common.base.Constants;
 import pe.com.microdata.cjava.common.validador.Validador;
-import pe.com.microdata.cjava.dataaccess.domain.administracion.persona.ClienteDAO;
-import pe.com.microdata.cjava.service.registro.dto.ClienteDTO;
+import pe.com.microdata.cjava.dataaccess.domain.administracion.persona.ArrendatarioDAO;
+import pe.com.microdata.cjava.service.registro.dto.ArrendatarioDTO;
 
 /**
  *
  * @author meliMeli
  */
-@Service("registrarClienteValidador")
-public class RegistrarClienteValidador implements Validator {
+@Service("registrarInstructorValidador")
+public class RegistrarArrendatarioValidador implements Validator {
 
     @SuppressWarnings("unchecked")
     @Autowired
-    ClienteDAO clienteDAO;
+    ArrendatarioDAO instructorDAO;
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return ClienteDTO.class.isAssignableFrom(clazz);
+        return ArrendatarioDTO.class.isAssignableFrom(clazz);
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        ClienteDTO dto = (ClienteDTO) target;
+        ArrendatarioDTO dto = (ArrendatarioDTO) target;
         if (!Validador.noNuloNoVacio(dto.getNombre())) {
             errors.rejectValue("usuario", "val.alumno.usuario_vacio");
         } else {
-            Boolean existe = clienteDAO.existeUsuario(dto.getUsuario());
+            Boolean existe = instructorDAO.existeUsuario(dto.getUsuario());
             if (existe) {
                 errors.rejectValue("usuario", "val.alumno.usuario");
             }
@@ -48,10 +48,11 @@ public class RegistrarClienteValidador implements Validator {
         if (!Validador.noNuloNoVacio(dto.getPrimerApellido())) {
             errors.rejectValue("primerApellido", "val.alumno.primerApellido");
         }
-
-        if (!Validador.noNuloNoVacio(dto.getSegundoApellido())) {
+        
+         if (!Validador.noNuloNoVacio(dto.getSegundoApellido())) {
             errors.rejectValue("segundoApellido", "val.alumno.segundoApellido");
         }
+
         if (!Validador.esFecha(dto.getFechaNacimiento(), Constants.FORMATO_FECHA)) {
             errors.rejectValue("fechaNacimiento", "val.alumno.fechaNacimiento");
         }
@@ -95,16 +96,7 @@ public class RegistrarClienteValidador implements Validator {
             errors.rejectValue("direccion", "val.alumno.direccion");
         }
 
-       if (!Validador.esMayorCero(dto.getIdOcupacion())) {
-            errors.rejectValue("idOcupacion", "val.alumno.ocupacion");
-        }
 
-        if (Validador.noNuloNoVacio(dto.getCorreoFace()) && !Validador.esEmail(dto.getCorreoFace())) {
-            errors.rejectValue("correoFace", "val.alumno.correoPersonal");
-        }
-        
-        if (Validador.noNuloNoVacio(dto.getCorreoFace()) && !Validador.esEmail(dto.getCorreoLinke())) {
-            errors.rejectValue("correoLinke", "val.alumno.correoPersonal");
-        }        
+
     }
 }
