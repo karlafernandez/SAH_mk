@@ -81,7 +81,7 @@
                                         <h:outputText value="Restricción"/>
                                     </div>
                                     <h:inputText id="restriccion" value="#{registroHabitacionBean.habitacionDTO.restricciones}" validatorMessage="Ingrese solo texto">
-                                        <f:validateRegex pattern="^[a-zA-Z]*"/>
+                                        <%--<f:validateRegex pattern="^[a-zA-Z]*"/>--%>
                                     </h:inputText>
                                     <h:message id="msg3" for="restriccion" errorStyle="color: red" infoStyle="color: green" rendered="true"/>
                                 </div> 
@@ -93,7 +93,7 @@
                                         <h:outputText value="Teléfono contacto"/>
                                     </div>
                                     <h:inputText id="telefonoContacto" value="#{registroHabitacionBean.habitacionDTO.caracteristicas}" validatorMessage="Ingrese solo números">
-                                        <f:validateRegex pattern="number"/>
+                                        <%--<f:validateRegex pattern="number"/>--%>
                                     </h:inputText>
                                     <h:message id="msg4" for="telefonoContacto" errorStyle="color: red" infoStyle="color: green" rendered="true"/>
                                 </div> 

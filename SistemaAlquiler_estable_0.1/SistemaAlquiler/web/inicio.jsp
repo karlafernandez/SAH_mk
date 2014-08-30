@@ -60,14 +60,15 @@
                            <form action="listahabitaciones.jsp" method="get">
                                 <label>Ususario</label>
                                 <input type="text" id="user" name="user"/>
+                                <a class="btn btn-info fa-input right" href="arrend_listhabit.jsp">Usuario Arrendatario</a> 
                                 <label>Password</label>
                                 <input type="text" id="pass" name="pass"/>
-                                <input type="submit" value="Usuario Cliente"/>
+                                <a class="btn btn-info fa-input right" href="listahabitaciones.jsp">Usuario Cliente</a>
                                 
                                  <!--<a class="btn btn-info fa-input right" href="registrate.jsp">Usuario Cliente</a>-->  
                                  
                             </form>
-                            <a class="btn btn-info fa-input right" href="arrend_listhabit.jsp">Usuario Arrendatario</a>  
+                             
 
                         </li>
 

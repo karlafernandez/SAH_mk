@@ -6,15 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ejemplo de una aplicación de struts 2 </title>
+<title>Ejemplo de una aplicación de struts_2 </title>
 </head>
 <body>
 	<center>
 		<h2>Ingrese Datos</h2>
-		<s:form action="/login" >
+		<s:form action="login.jsp" method="get">
 			<s:textfield name="usuario" size="8" label="DNI" />
 			<s:textfield name="pass" size="10" label="Contraseña" type="password" />
-			<s:submit value="Login" />
+			<s:submit value="login.jsp" />
 		</s:form>
 	</center>
 </body>

@@ -18,6 +18,7 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
+    <!--
      <filter>
       <filter-name>struts2</filter-name>
       <filter-class>
@@ -29,19 +30,20 @@
       <filter-name>struts2</filter-name>
       <url-pattern>/struts/*</url-pattern>
    </filter-mapping>
-    <!-- servlet>
+   -->
+    <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>com.sah.controller.Login</servlet-class>
     </servlet>
    <servlet-mapping>
         <servlet-name>login</servlet-name>
         <url-pattern>/SimpleServlet</url-pattern>
-    </servlet-mapping-->
-    <!--   
+    </servlet-mapping>
+     
     <servlet>
         <servlet-name>detalle_habitacion</servlet-name>
         <url-pattern>/detalleHabit</url-pattern>
-    </servlet>-->
+    </servlet>
     <welcome-file-list>
         <welcome-file>faces/inicio.jsp</welcome-file>
     </welcome-file-list>
