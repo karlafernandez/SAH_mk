@@ -23,7 +23,7 @@ import pe.com.microdata.cjava.common.base.Constants;
 import pe.com.microdata.cjava.common.base.Grid;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
 import pe.com.microdata.cjava.web.base.BaseController;
-import pe.com.microdata.cjava.service.registro.GestionarInstructor;
+import pe.com.microdata.cjava.service.registro.GestionarArrendatario;
 import pe.com.microdata.cjava.service.ubigeo.GestionarUbigeo;
 
 /**
@@ -44,7 +44,7 @@ public class ArrendatarioListaController extends BaseController {
     GestionarUbigeo gestionarUbigeo;
     
     @Autowired
-    GestionarInstructor gestionarInstructor;
+    GestionarArrendatario gestionarArrendatario;
 
  
      @ModelAttribute(MODEL_FILTRO)
@@ -73,7 +73,8 @@ public class ArrendatarioListaController extends BaseController {
     @RequestMapping(params = "eliminar", method = RequestMethod.GET)
     public String eliminar(@RequestParam(ID_INSTRUCTOR) Integer idInstructor, HttpServletRequest request, HttpSession session) {
         SIGAMessage messageDTO = new SIGAMessage();
-        gestionarInstructor.eliminarInstructor(idInstructor);
+        gestionarArrendatario.eliminarArrendatario(idInstructor);
+              
         messageDTO.setSuccess(Boolean.TRUE);
         messageDTO.setMessageType(SIGAMessage.MessageType.SUCCESS);
         messageDTO.addMessages(getText("msg.usuario.eliminar"));
@@ -83,9 +84,11 @@ public class ArrendatarioListaController extends BaseController {
 
     private Grid lanzarBusqueda(BusquedaDTO busquedaDTO) {
         Grid grillaDTO = new Grid();
-        List lstInstructor = gestionarInstructor.obtenerInstructorPorBusqueda(busquedaDTO);
+        List lstInstructor = gestionarArrendatario.obtenerArrendatarioPorBusqueda(busquedaDTO);
+               
             
-        Long total = gestionarInstructor.obtenerTotalInstructoresPorBusqueda(busquedaDTO);
+        Long total = gestionarArrendatario.obtenerTotalArrendatariosPorBusqueda(busquedaDTO);
+                
             
 
         grillaDTO.setRows(lstInstructor);

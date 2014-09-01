@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import pe.com.microdata.cjava.common.base.BusquedaDTO;
 import pe.com.microdata.cjava.common.base.Constants;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
-import pe.com.microdata.cjava.dataaccess.domain.administracion.curso.CuartoDAO;
+import pe.com.microdata.cjava.dataaccess.domain.administracion.cuarto.CuartoDAO;
 import pe.com.microdata.cjava.dataaccess.model.administracion.curso.CuartoVO;
 import pe.com.microdata.cjava.service.administracion.curso.cuarto.GestionarCursoEspecifico;
 import pe.com.microdata.cjava.service.administracion.curso.cuarto.dto.CuartoDTO;
@@ -37,7 +37,7 @@ public class GestionarCuartoImpl implements GestionarCursoEspecifico{
         }                
         return listaCursoEspDTO;
     }
-
+/*
     @Override
     public List obtenerListaCursoEspecificoPorBusqueda(BusquedaDTO busquedaDTO) {
         List<CuartoDTO> listaCursoEspDTO = new ArrayList<CuartoDTO>();
@@ -46,7 +46,7 @@ public class GestionarCuartoImpl implements GestionarCursoEspecifico{
             listaCursoEspDTO.add(convertirVOToDTO(cursoEspVO));                        
         }          
         return listaCursoEspDTO;
-    }                              
+    }            */                  
     
     @Override
     public SIGAMessage registrarCursoEspecifico(CuartoDTO dto) {
@@ -116,6 +116,7 @@ public class GestionarCuartoImpl implements GestionarCursoEspecifico{
         return message;  
     }
 
+   /*
     @Override
     public CuartoDTO obtenerCursoEspecificoPorId(Integer idCursoEsp) {
         CuartoVO vo = cuartoDAO.obtenerCuartoPorId(idCursoEsp);
@@ -127,6 +128,7 @@ public class GestionarCuartoImpl implements GestionarCursoEspecifico{
         Long total = cuartoDAO.obtenerTotalCuartoPorBusqueda(busquedaDTO);
         return total;
     }
+    */
     
     private CuartoDTO convertirVOToDTO(CuartoVO vo){
         CuartoDTO dto = new CuartoDTO();        

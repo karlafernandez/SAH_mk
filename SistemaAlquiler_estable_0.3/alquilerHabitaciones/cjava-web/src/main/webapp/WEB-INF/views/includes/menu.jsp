@@ -64,15 +64,8 @@
         <sec:authorize access="hasAnyRole('MOD_OPE_LISTAR_CURSO_ACTIVO_APERTURADO')">    
             <li class="dir" >Arrendatario
                 <ul> 
-                    <li class="dir"> Agregar Habitaciones
-                        <ul>
-                            <%--<sec:authorize access="hasRole('MOD_OPE_LISTAR_CURSO_ACTIVO_APERTURADO')">--%>
-                                <li>
-                                    <a href="lista-curso-operacion.html">Programación de Cursos</a>
-                                </li>                               
-                            <%--</sec:authorize>--%>                                                    
-                        </ul>
-                    </li>
+                   
+                    <li><a href="lista-cuarto.html">Lista Habitaciones</a></li> 
                     <%--<sec:authorize access="hasRole('MOD_OPE_ESCOGER_ALUMNOS_PARA_CURSO_GENERAL')">--%>
                         <li class="dir">Certificados Generales
                             <ul>

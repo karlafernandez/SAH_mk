@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
 import pe.com.microdata.cjava.service.gestionar_listas.GestionarListas;
-import pe.com.microdata.cjava.service.registro.GestionarInstructor;
+import pe.com.microdata.cjava.service.registro.GestionarArrendatario;
 import pe.com.microdata.cjava.service.registro.dto.ArrendatarioDTO;
 import pe.com.microdata.cjava.service.registro.validador.RegistrarArrendatarioValidador;
 import pe.com.microdata.cjava.web.base.BaseController;
@@ -38,7 +38,7 @@ public class RegistrarArrendatariosController extends BaseController {
     private static final String TIPO_DOCUMENTO = "lstTipoDocumento";
     private static final String TIPO_TELEF = "lstTipoTelefono";
     @Autowired
-    GestionarInstructor gestionarInstructor;
+    GestionarArrendatario gestionarArrendatario;
     @Autowired
     RegistrarArrendatarioValidador instructorValidador;
     @Autowired
@@ -78,7 +78,8 @@ public class RegistrarArrendatariosController extends BaseController {
         m.setSuccess(Boolean.FALSE);
          instructorValidador.validate(instructorDTO, result);
         if (!result.hasErrors()) {
-                m = gestionarInstructor.registrarInstructor(instructorDTO);
+                m = gestionarArrendatario.registrarArrendatario(instructorDTO);
+                      
                
             if (m.getSuccess()) {
                 m.setMessageType(SIGAMessage.MessageType.SUCCESS);

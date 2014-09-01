@@ -83,7 +83,8 @@ public class ModificarDatosClienteController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String vista(ModelMap model, HttpServletRequest request, @RequestParam(ID_ALUMNO) Integer idAlumno) {
-        ClienteDTO promotor = gestionarAlumno.obtenerAlumnoPorId(idAlumno);
+        ClienteDTO promotor = gestionarAlumno.obtenerClientePorId(idAlumno);
+              
 
         model.addAttribute(ALUMNO, promotor);
         return NOREDIRECCIONAR;
@@ -97,7 +98,8 @@ public class ModificarDatosClienteController extends BaseController {
         m.setSuccess(false);
         validator.validate(dto, result);
         if (!result.hasErrors()) {
-            m = gestionarAlumno.modificarAlumno(dto);
+            m = gestionarAlumno.modificarCliente(dto);
+                    
             if (m.getSuccess()) {
                 m.setMessageType(SIGAMessage.MessageType.SUCCESS);
                 m.addMessages(getText("msg.usuario.crear_exito"));

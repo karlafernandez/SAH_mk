@@ -11,28 +11,25 @@ import pe.com.microdata.cjava.common.base.BusquedaDTO;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
 import pe.com.microdata.cjava.service.registro.dto.HistorialCursoDTO;
 
-/**
- *
- * @author meliMeli
- * @author maparicio
- */
+
 public interface GestionarCliente {
 
-    public SIGAMessage registrarAlumno(ClienteDTO alumnoDTO);
+    public SIGAMessage registrarCliente(ClienteDTO alumnoDTO);
 
-    public SIGAMessage modificarAlumno(ClienteDTO alumnoDTO);
+    public SIGAMessage modificarCliente(ClienteDTO alumnoDTO);
 
-    public void eliminarAlumno(Integer alumno);
+    public void eliminarCliente(Integer alumno);
 
-    public ClienteDTO obtenerAlumnoPorId(Integer idPersona);
+    public ClienteDTO obtenerClientePorId(Integer idPersona);
 
     public ClienteDTO obtenerCodigoAutogenerado(BusquedaDTO busquedaDTO);
 
    // public HistorialCursoDTO obtenerHistorialCursoPorIdAlumno(Integer idAlum);
 
-    public List obtenerTotalAlumnos();
+    public List obtenerTotalClientes();
 
-    public List obtenerAlumnoPorBusqueda(BusquedaDTO busquedaDTO);
+    public List obtenerClientePorBusqueda(BusquedaDTO busquedaDTO);
 
-    public Long obtenerTotalAlumnosPorBusqueda(BusquedaDTO busquedaDTO);
+    public Long obtenerTotalClientesPorBusqueda(BusquedaDTO busquedaDTO);
+    
 }

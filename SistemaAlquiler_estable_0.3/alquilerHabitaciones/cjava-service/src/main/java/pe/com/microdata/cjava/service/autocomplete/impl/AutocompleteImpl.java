@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.com.microdata.cjava.dataaccess.domain.administracion.curso.CuartoDAO;
+import pe.com.microdata.cjava.dataaccess.domain.administracion.cuarto.CuartoDAO;
 import pe.com.microdata.cjava.dataaccess.domain.administracion.persona.ClienteDAO;
 import pe.com.microdata.cjava.dataaccess.domain.administracion.persona.ArrendatarioDAO;
 import pe.com.microdata.cjava.dataaccess.domain.operacion.operacion.OperacionClienteDAO;
@@ -42,7 +42,7 @@ public class AutocompleteImpl implements Autocomplete {
     @Autowired
     private ArrendatarioDAO instructorDAO;
 
-
+/*
     @Override
     public List buscarPorNombreCursoEspecifico(String strBusqueda) {
         int min = 3;
@@ -103,6 +103,9 @@ public class AutocompleteImpl implements Autocomplete {
         return autoList;
     }
 
+    */
+    
+    
     /*
     @Override
     public List buscarPorNombreInstructores(String strBusqueda) {

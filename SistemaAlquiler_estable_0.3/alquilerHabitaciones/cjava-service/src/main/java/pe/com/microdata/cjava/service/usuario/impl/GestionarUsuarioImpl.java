@@ -19,17 +19,14 @@ import pe.com.microdata.cjava.service.usuario.GestionarUsuario;
 import pe.com.microdata.cjava.service.usuario.dto.CambiarClaveUsuarioDTO;
 import pe.com.microdata.cjava.service.usuario.dto.RestaurarClaveDTO;
 
-/**
- *
- * @author César Bragagnini
- */
+
 @Service("GestionarUsuario")
 public class GestionarUsuarioImpl implements GestionarUsuario{
 
     @Autowired
     PersonaDAO personaDAO;
     @Autowired
-    ArrendatarioDAO instructorDAO;
+    ArrendatarioDAO arrendatarioDAO;
     @Autowired
     MailService mailService;    
     
@@ -40,7 +37,9 @@ public class GestionarUsuarioImpl implements GestionarUsuario{
         try {
             Integer id = dto.getIdPersona();
             if(dto.getTipoUser() != Constants.SUBTIPO_USER_ADMINISTRADOR){
-                ArrendatarioVO instructorVO = instructorDAO.obtenerInstructorPorIdInstructor(id);
+                ArrendatarioVO instructorVO = arrendatarioDAO.obtenerArrendatarioPorIdArrendatario(id);
+                        
+                        
                 id = instructorVO.getInstructorPersonaVO().getIdPersona();
             }
             PersonaVO vo = personaDAO.obtenerPersonaPorIdPersona(id);                  

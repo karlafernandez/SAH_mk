@@ -42,7 +42,7 @@ public class ClienteListaController extends BaseController {
     @Autowired
     GestionarUbigeo gestionarUbigeo;
     @Autowired
-    GestionarCliente gestionarAlumno;
+    GestionarCliente gestionarCliente;
 
     @ModelAttribute(MODEL_FILTRO)
     public BusquedaDTO modeloFiltro(Model model) {
@@ -70,7 +70,8 @@ public class ClienteListaController extends BaseController {
     @RequestMapping(params = "eliminar", method = RequestMethod.GET)
     public String eliminar(@RequestParam(ID_ALUMNO) Integer idAlumno, HttpServletRequest request, HttpSession session) {
         SIGAMessage messageDTO = new SIGAMessage();
-        gestionarAlumno.eliminarAlumno(idAlumno);
+        gestionarCliente.eliminarCliente(idAlumno);
+              
         messageDTO.setSuccess(Boolean.TRUE);
         messageDTO.setMessageType(SIGAMessage.MessageType.SUCCESS);
         messageDTO.addMessages(getText("msg.usuario.eliminar"));
@@ -80,8 +81,9 @@ public class ClienteListaController extends BaseController {
 
     private Grid lanzarBusqueda(BusquedaDTO busquedaDTO) {
         Grid grillaDTO = new Grid();
-        List lstAlumnos = gestionarAlumno.obtenerAlumnoPorBusqueda(busquedaDTO);
-        Long total = gestionarAlumno.obtenerTotalAlumnosPorBusqueda(busquedaDTO);
+        List lstAlumnos = gestionarCliente.obtenerClientePorBusqueda(busquedaDTO);
+               
+        Long total = gestionarCliente.obtenerTotalClientesPorBusqueda(busquedaDTO);
 
         grillaDTO.setRows(lstAlumnos);
         grillaDTO.setPage(busquedaDTO.getInicio());

@@ -13,7 +13,8 @@ import java.util.List;
  */
 public interface GestionarUbigeo {
 
-   /* List obtenerDepartamentos();
+   /* 
+    List obtenerDepartamentos();
     List obtenerProvincias();
     List obtenerDistritos();
 

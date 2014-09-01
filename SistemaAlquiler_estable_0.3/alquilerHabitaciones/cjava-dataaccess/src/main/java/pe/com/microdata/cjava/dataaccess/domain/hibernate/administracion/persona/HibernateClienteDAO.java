@@ -27,17 +27,17 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     public HibernateClienteDAO() {
         super(ClienteVO.class);
         eq = new HashMap<String, ReglaDTO>();
-        eq.put("numDocumento", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.documentoPer"));
-        eq.put("nomAlumno", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.nomPersona"));
-        eq.put("primerApe", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.primerApellidoPer"));
-        eq.put("segundoApe", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.segundoApellidoPer"));
-        eq.put("buscarNombre", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, Constants.LOG_OR, new String[]{"alumnoPersonaVO.primerApellidoPer", "alumnoPersonaVO.segundoApellidoPer", "alumnoPersonaVO.nomPersona"}));
-        eq.put("buscarNroDoc", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.documentoPer"));
+//        eq.put("numDocumento", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.documentoPer"));
+//        eq.put("nomAlumno", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.nomPersona"));
+//        eq.put("primerApe", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.primerApellidoPer"));
+//        eq.put("segundoApe", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.segundoApellidoPer"));
+//        eq.put("buscarNombre", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, Constants.LOG_OR, new String[]{"alumnoPersonaVO.primerApellidoPer", "alumnoPersonaVO.segundoApellidoPer", "alumnoPersonaVO.nomPersona"}));
+//        eq.put("buscarNroDoc", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "alumnoPersonaVO.documentoPer"));
 
     }
 
     @Override
-    public ClienteVO obtenerAlumnoPorNombreUsuario(String nomPersona) {
+    public ClienteVO obtenerClientePorNombreUsuario(String nomPersona) {
         ClienteVO usuario = null;
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         detachedCriteria.add(Restrictions.eq("nomPersona", nomPersona));
@@ -49,7 +49,7 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     }
 
     @Override
-    public ClienteVO obtenerAlumnoPorIdAlumno(Integer idAlumno) {
+    public ClienteVO obtenerClientePorIdCliente(Integer idAlumno) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         ClienteVO alumnoVO = null;
         detachedCriteria.createAlias("alumnoPersonaVO", "alumnoPersonaVO", DetachedCriteria.LEFT_JOIN);
@@ -69,7 +69,7 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     }
 
     @Override
-    public List obtenerAlumnoPorIdAlumnoLista(Integer idAlumno) {
+    public List obtenerClientePorIdClienteLista(Integer idAlumno) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         detachedCriteria.add(Restrictions.eq("idAlumno", idAlumno));
         List<ClienteVO> usuarios = listByCriteria(detachedCriteria);
@@ -77,7 +77,7 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     }
 
     @Override
-    public List<ClienteVO> obtenerAlumnosPorBusqueda(BusquedaDTO busquedaDTO) {
+    public List<ClienteVO> obtenerClientesPorBusqueda(BusquedaDTO busquedaDTO) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         detachedCriteria.createAlias("alumnoPersonaVO", "alumnoPersonaVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.createAlias("alumnoPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
@@ -112,7 +112,7 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     }
 
     @Override
-    public Long obtenerTotalAlumnosPorBusqueda(BusquedaDTO busquedaDTO) {//////////////CORREGIR///////////////////
+    public Long obtenerTotalClientesPorBusqueda(BusquedaDTO busquedaDTO) {//////////////CORREGIR///////////////////
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         detachedCriteria.createAlias("alumnoPersonaVO", "alumnoPersonaVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.createAlias("alumnoPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
@@ -152,7 +152,7 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     }
 
     @Override
-    public List obtenerTotalAlumnos() {
+    public List obtenerTotalClientes() {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         detachedCriteria.createAlias("alumnoPersonaVO", "alumnoPersonaVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
@@ -161,7 +161,7 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     }
 
     @Override
-    public List obtenerNombreDNIAlumnosPorBusqueda(String strBusqueda) {
+    public List obtenerNombreDNIClientesPorBusqueda(String strBusqueda) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         detachedCriteria.createAlias("alumnoPersonaVO", "alumnoPersonaVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.add(Restrictions.conjunction().add(Restrictions.or(
@@ -173,7 +173,7 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     }
 
     @Override
-    public List obtenerAlumnosConCursoPorBusqueda(BusquedaDTO busquedaDTO) {
+    public List obtenerClientesConCursoPorBusqueda(BusquedaDTO busquedaDTO) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         detachedCriteria.createAlias("alumnoPersonaVO", "personaVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.createAlias("personaVO.idDocumentoVO", "documentoVO", DetachedCriteria.LEFT_JOIN);
@@ -203,7 +203,7 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
     }
 
     @Override
-    public Long obtenerTotalAlumnosConCursoPorBusqueda(BusquedaDTO busquedaDTO) {
+    public Long obtenerTotalClientesConCursoPorBusqueda(BusquedaDTO busquedaDTO) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ClienteVO.class);
         detachedCriteria.createAlias("lstOperacionAlumnoDevVOs", "operacionAlumnoDevVO", DetachedCriteria.LEFT_JOIN);
         detachedCriteria.createAlias("operacionAlumnoDevVO.operacionAlumnoVO", "operacionDevVO", DetachedCriteria.LEFT_JOIN);
@@ -231,4 +231,5 @@ public class HibernateClienteDAO extends HibernateGenericDAO<ClienteVO, Integer>
         Long total = ((Long) getHibernateTemplate().findByCriteria(detachedCriteria).get(0)).longValue();
         return total;
     }
+    
 }

@@ -35,7 +35,8 @@ public class RegistrarClienteValidador implements Validator {
         if (!Validador.noNuloNoVacio(dto.getNombre())) {
             errors.rejectValue("usuario", "val.alumno.usuario_vacio");
         } else {
-            Boolean existe = clienteDAO.existeUsuario(dto.getUsuario());
+            Boolean existe = true;
+                    //clienteDAO.existeUsuario(dto.getUsuario());
             if (existe) {
                 errors.rejectValue("usuario", "val.alumno.usuario");
             }

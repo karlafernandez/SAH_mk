@@ -64,13 +64,15 @@ public class WebAuthenticationProvider implements AuthenticationProvider {
                     userDetailsDTO.setNomUsuario(usuario.getUsuarioPersona());
                     userDetailsDTO.setTipoUser(Constants.SUBTIPO_USER_ADMINISTRADOR);
                     userDetailsDTO.setNomCargo(usuario.getTipoUserVO().getDesSubtipo());
+                    /*
                     if(usuario.getTipoUserVO().getIdSubTipo() == Constants.SUBTIPO_USER_INSTRUCTOR){
                         ArrendatarioVO instrucVO = instructorDAO.obtenerInstructorPorIdPersona(usuario.getIdPersona());
                         userDetailsDTO.setIdUsuario(instrucVO.getIdInstructor());
                         userDetailsDTO.setTipoUser(Constants.SUBTIPO_USER_INSTRUCTOR);
                     }else{  
                         userDetailsDTO.setIdUsuario(usuario.getIdPersona());                                                
-                    }    
+                    }
+                            */
                     List<String> accesos = new ArrayList<String>();
                     for (AccesoVO acceso : new ArrayList<AccesoVO>(usuario.getAccesoVOs())) {
                         accesos.add(acceso.getNomAcceso());

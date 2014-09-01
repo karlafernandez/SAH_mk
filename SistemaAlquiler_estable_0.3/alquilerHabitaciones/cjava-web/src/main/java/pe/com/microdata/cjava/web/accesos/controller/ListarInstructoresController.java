@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import pe.com.microdata.cjava.common.base.BusquedaDTO;
 import pe.com.microdata.cjava.common.base.Constants;
 import pe.com.microdata.cjava.common.base.Grid;
-import pe.com.microdata.cjava.service.registro.GestionarInstructor;
+import pe.com.microdata.cjava.service.registro.GestionarArrendatario;
 import pe.com.microdata.cjava.service.ubigeo.GestionarUbigeo;
 import pe.com.microdata.cjava.web.base.BaseController;
 
@@ -35,7 +35,7 @@ public class ListarInstructoresController extends BaseController {
     GestionarUbigeo gestionarUbigeo;
 
     @Autowired
-    GestionarInstructor gestionarInstructor;
+    GestionarArrendatario gestionarInstructor;
 
     @ModelAttribute(MODEL_FILTRO)
     public BusquedaDTO modeloFiltro(Model model) {
@@ -46,7 +46,7 @@ public class ListarInstructoresController extends BaseController {
     @RequestMapping(method = RequestMethod.GET)
     public String vista(ModelMap model) {     
         BusquedaDTO dto = (BusquedaDTO) model.get(MODEL_FILTRO);
-        model.addAttribute(GRILLA, lanzarBusqueda(dto));        
+//        model.addAttribute(GRILLA, lanzarBusqueda(dto));        
         return NOREDIRECCIONAR;
     }
 
@@ -57,12 +57,12 @@ public class ListarInstructoresController extends BaseController {
         logger.info("no llega aca buscar");
         
         model.addAttribute(MODEL_FILTRO, busquedaDTO);
-        model.addAttribute(GRILLA, lanzarBusqueda(busquedaDTO));
+  //      model.addAttribute(GRILLA, lanzarBusqueda(busquedaDTO));
         
         return NOREDIRECCIONAR;
 
     }
-
+/*
     private Grid lanzarBusqueda(BusquedaDTO busquedaDTO) {
         Grid grillaDTO = new Grid();
         List lstInstructor = gestionarInstructor.obtenerInstructorPorBusqueda(busquedaDTO);
@@ -76,5 +76,5 @@ public class ListarInstructoresController extends BaseController {
 
         return grillaDTO;
 
-    }
+    }*/
 }

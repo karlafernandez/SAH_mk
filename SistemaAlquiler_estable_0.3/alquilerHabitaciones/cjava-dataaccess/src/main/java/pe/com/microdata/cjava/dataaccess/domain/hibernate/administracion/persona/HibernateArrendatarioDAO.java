@@ -26,31 +26,19 @@ import pe.com.microdata.cjava.dataaccess.util.GeneradorRestricciones;
  */
 public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO, Integer>
         implements ArrendatarioDAO {
-
+ 
     HashMap<String, ReglaDTO> eq;
 
     public HibernateArrendatarioDAO() {
         super(ArrendatarioVO.class);
         eq = new HashMap<String, ReglaDTO>();
-        eq.put("buscarNombre", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, Constants.LOG_OR, "instructorPersonaVO.nomPersona", "instructorPersonaVO.primerApellidoPer", "instructorPersonaVO.segundoApellidoPer"));
-        eq.put("buscarNroDoc", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "instructorPersonaVO.documentoPer"));
+    //    eq.put("buscarNombre", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, Constants.LOG_OR, "instructorPersonaVO.nomPersona", "instructorPersonaVO.primerApellidoPer", "instructorPersonaVO.segundoApellidoPer"));
+    //  eq.put("buscarNroDoc", new ReglaDTO(Constants.OPE_LIKE, Constants.TYPE_STRING, "instructorPersonaVO.documentoPer"));
 
     }
 
     @Override
-    public ArrendatarioVO obtenerInstructorPorNombreUsuario(String nomPersona) {
-        ArrendatarioVO usuario = null;
-        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
-        detachedCriteria.add(Restrictions.eq("nomPersona", nomPersona));
-        List usuarios = listByCriteria(detachedCriteria);
-        if (!usuarios.isEmpty()) {
-            usuario = (ArrendatarioVO) usuarios.get(0);
-        }
-        return usuario;
-    }
-
-    @Override
-    public ArrendatarioVO obtenerInstructorPorIdInstructor(Integer idArrendatario) {
+    public ArrendatarioVO obtenerArrendatarioPorIdArrendatario(Integer idArrendatario) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
         ArrendatarioVO instructorVO = null;
         detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
@@ -66,6 +54,21 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
         }
         return instructorVO;
     }
+    /*
+    
+    @Override
+    public ArrendatarioVO obtenerInstructorPorNombreUsuario(String nomPersona) {
+        ArrendatarioVO usuario = null;
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
+        detachedCriteria.add(Restrictions.eq("nomPersona", nomPersona));
+        List usuarios = listByCriteria(detachedCriteria);
+        if (!usuarios.isEmpty()) {
+            usuario = (ArrendatarioVO) usuarios.get(0);
+        }
+        return usuario;
+    }
+
+   
 
     @Override
     public List obtenerInstructorPorIdInstructorLista(Integer idArrendatario) {
@@ -76,74 +79,7 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
         return usuarios;
     }
 
-    @Override
-    public List<ArrendatarioVO> obtenerInstructorPorBusqueda(BusquedaDTO busquedaDTO) {
-        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
-        ReglaDTO reglasDTO;
-        Criterion c;
-        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("arrendatarioPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("arrendatarioPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
-
-
-        // detachedCriteria.addOrder(Order.desc("primerApellidoPer"));
-
-
-        if (busquedaDTO != null && busquedaDTO.getCondiciones() != null) {
-            for (CondicionDTO regla : busquedaDTO.getCondiciones()) {
-                if (Validador.noNuloNoVacio(regla.getData())) {
-                    if (eq.containsKey(regla.getField())) {
-                        reglasDTO = eq.get(regla.getField());
-                        reglasDTO.setData(regla.getData());
-                        c = GeneradorRestricciones.generar(reglasDTO);
-                        if (c != null) {
-                            detachedCriteria.add(c);
-                        }
-                    }
-                }
-            }
-        }
-        List<ArrendatarioVO> listadoVOs;
-        if (busquedaDTO.getInicio() > 0 && busquedaDTO.getCantidad() > 0) {
-            listadoVOs = listByCriteria(detachedCriteria, ((busquedaDTO.getInicio() - 1) * busquedaDTO.getCantidad()), busquedaDTO.getCantidad());
-        } else {
-            listadoVOs = listByCriteria(detachedCriteria);
-        }
-        return listadoVOs;
-    }
-
-    @Override
-    public Long obtenerTotalInstructoresPorBusqueda(BusquedaDTO busquedaDTO) {//////////////CORREGIR///////////////////
-        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
-        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("arrendatarioPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.createAlias("arrendatarioPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
-        detachedCriteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
-        ProjectionList projList = Projections.projectionList();
-        projList.add(Projections.countDistinct(("idInstructor")));
-        detachedCriteria.setProjection(projList); // conteo las filas  
-        ReglaDTO reglasDTO;
-        Criterion c;
-        if (busquedaDTO != null && busquedaDTO.getCondiciones() != null) {
-            for (CondicionDTO regla : busquedaDTO.getCondiciones()) {
-                if (Validador.noNuloNoVacio(regla.getData())) {
-                    if (eq.containsKey(regla.getField())) {
-                        reglasDTO = eq.get(regla.getField());
-                        reglasDTO.setData(regla.getData());
-                        c = GeneradorRestricciones.generar(reglasDTO);
-                        if (c != null) {
-                            detachedCriteria.add(c);
-                        }
-                    }
-                }
-            }
-        }
-
-
-        Long total = ((Long) getHibernateTemplate().findByCriteria(detachedCriteria).get(0)).longValue();
-        return total;
-    }
+   
     
         @Override
     public Boolean existeUsuario(String usuario) {
@@ -182,5 +118,76 @@ public class HibernateArrendatarioDAO extends HibernateGenericDAO<ArrendatarioVO
             vo = listInstruc.get(0);
         return vo;
     }
-          
+        */ 
+    @Override
+    public Long obtenerTotalArrendatariosPorBusqueda(BusquedaDTO busquedaDTO) {//////////////CORREGIR///////////////////
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
+        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
+     //   detachedCriteria.createAlias("arrendatarioPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
+     //   detachedCriteria.createAlias("arrendatarioPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
+        ProjectionList projList = Projections.projectionList();
+        projList.add(Projections.countDistinct(("idArrendatario")));
+        detachedCriteria.setProjection(projList); // conteo las filas  
+        ReglaDTO reglasDTO;
+        Criterion c;
+        if (busquedaDTO != null && busquedaDTO.getCondiciones() != null) {
+            for (CondicionDTO regla : busquedaDTO.getCondiciones()) {
+                if (Validador.noNuloNoVacio(regla.getData())) {
+                    if (eq.containsKey(regla.getField())) {
+                        reglasDTO = eq.get(regla.getField());
+                        reglasDTO.setData(regla.getData());
+                        c = GeneradorRestricciones.generar(reglasDTO);
+                        if (c != null) {
+                            detachedCriteria.add(c);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        Long total = ((Long) getHibernateTemplate().findByCriteria(detachedCriteria).get(0)).longValue();
+        return total;
+    }
+    
+    
+    
+     @Override
+    public List<ArrendatarioVO> obtenerArrendatarioPorBusqueda(BusquedaDTO busquedaDTO) {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(ArrendatarioVO.class);
+        ReglaDTO reglasDTO;
+        Criterion c;
+        detachedCriteria.createAlias("arrendatarioPersonaVO", "arrendatarioPersonaVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO.idDocumentoVO", "idDocumentoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.createAlias("arrendatarioPersonaVO.ubigeoVO", "ubigeoVO", DetachedCriteria.LEFT_JOIN);
+        detachedCriteria.setResultTransformer(DetachedCriteria.DISTINCT_ROOT_ENTITY);
+
+
+        // detachedCriteria.addOrder(Order.desc("primerApellidoPer"));
+
+
+        if (busquedaDTO != null && busquedaDTO.getCondiciones() != null) {
+            for (CondicionDTO regla : busquedaDTO.getCondiciones()) {
+                if (Validador.noNuloNoVacio(regla.getData())) {
+                    if (eq.containsKey(regla.getField())) {
+                        reglasDTO = eq.get(regla.getField());
+                        reglasDTO.setData(regla.getData());
+                        c = GeneradorRestricciones.generar(reglasDTO);
+                        if (c != null) {
+                            detachedCriteria.add(c);
+                        }
+                    }
+                }
+            }
+        }
+        List<ArrendatarioVO> listadoVOs;
+        if (busquedaDTO.getInicio() > 0 && busquedaDTO.getCantidad() > 0) {
+            listadoVOs = listByCriteria(detachedCriteria, ((busquedaDTO.getInicio() - 1) * busquedaDTO.getCantidad()), busquedaDTO.getCantidad());
+        } else {
+            listadoVOs = listByCriteria(detachedCriteria);
+        }
+        return listadoVOs;
+    }
+
 }

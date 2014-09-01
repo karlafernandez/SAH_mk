@@ -14,9 +14,9 @@ public interface Autocomplete {
 
      
       
-    List buscarPorNombreCursoEspecifico(String strBusqueda) ;
+//    List buscarPorNombreCursoEspecifico(String strBusqueda) ;
     
-    List buscarPorNombreAlumnos(String strBusqueda);
+//    List buscarPorNombreAlumnos(String strBusqueda);
     
    // public List buscarPorNombreInstructores(String strBusqueda);
     

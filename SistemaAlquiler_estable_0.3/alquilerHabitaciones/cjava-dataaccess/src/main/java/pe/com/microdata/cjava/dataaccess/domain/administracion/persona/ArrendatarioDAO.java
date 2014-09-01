@@ -9,19 +9,27 @@ import pe.com.microdata.cjava.dataaccess.model.administracion.persona.Arrendatar
 
 public interface ArrendatarioDAO extends GenericDAO<ArrendatarioVO, Integer> {
 
+     public ArrendatarioVO obtenerArrendatarioPorIdArrendatario(Integer idInstructor);
+    /*
     public ArrendatarioVO obtenerInstructorPorNombreUsuario(String nomPersona);
 
-    public ArrendatarioVO obtenerInstructorPorIdInstructor(Integer idInstructor);
+   
 
     public List obtenerInstructorPorIdInstructorLista(Integer idInstructor);
 
-    public List<ArrendatarioVO> obtenerInstructorPorBusqueda(BusquedaDTO busquedaDTO);
+   
 
-    public Long obtenerTotalInstructoresPorBusqueda(BusquedaDTO busquedaDTO);
+   
 
     public Boolean existeUsuario(String usuario);
     
     public List obtenerNombreDniInstructorPorBusqueda(String strBusqueda);
     
     public ArrendatarioVO obtenerInstructorPorIdPersona(Integer idPersona);
+    
+    */
+     
+      public Long obtenerTotalArrendatariosPorBusqueda(BusquedaDTO busquedaDTO);
+      
+       public List<ArrendatarioVO> obtenerArrendatarioPorBusqueda(BusquedaDTO busquedaDTO);
 }

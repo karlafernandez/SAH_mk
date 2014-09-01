@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 import pe.com.microdata.cjava.common.base.BusquedaDTO;
 import pe.com.microdata.cjava.common.base.Constants;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
-import pe.com.microdata.cjava.dataaccess.domain.administracion.curso.CuartoDAO;
+import pe.com.microdata.cjava.dataaccess.domain.administracion.cuarto.CuartoDAO;
 import pe.com.microdata.cjava.dataaccess.domain.administracion.persona.SubtipoDAO;
 import pe.com.microdata.cjava.dataaccess.domain.operacion.operacion.OperacionClienteDAO;
 import pe.com.microdata.cjava.dataaccess.domain.operacion.operacion.OperacionDAO;
@@ -50,7 +50,7 @@ public class GestionarOperacionImpl implements GestionarOperacion {
     OperacionClienteDAO operacionAlumnoDAO;
  
     @Autowired
-    CuartoDAO cursoEspecificoDAO;
+    CuartoDAO cuartoDAO;
     @Autowired
     SubtipoDAO subTipoDAO;
   

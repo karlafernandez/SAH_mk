@@ -42,11 +42,11 @@ public class RegistrarClientesController extends BaseController {
     private static final String BUSQUEDA = "busqueda";
     //  private static final String LST_DEPARTAMENTOS = "departamentos";
     @Autowired
-    GestionarCliente gestionarAlumno;
+    GestionarCliente gestionarCliente;
     @Autowired
     GestionarListas gestionarListas;
     @Autowired
-    RegistrarClienteValidador alumnoValidador;
+    RegistrarClienteValidador clienteValidador;
 
     @ModelAttribute(REGISTRO_DATOS)
     public ClienteDTO modelo(Model model) {
@@ -88,7 +88,7 @@ public class RegistrarClientesController extends BaseController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String vista(Model model, HttpServletRequest request /*, @RequestParam(BUSQUEDA) BusquedaDTO dto*/) {
-        //AlumnoDTO codigo = gestionarAlumno.obtenerCodigoAutogenerado(dto);
+        //AlumnoDTO codigo = gestionarCliente.obtenerCodigoAutogenerado(dto);
         //model.addAttribute(REGISTRO_DATOS, codigo);
         return NOREDIRECCIONAR;
     }
@@ -102,10 +102,10 @@ public class RegistrarClientesController extends BaseController {
         String view = NOREDIRECCIONAR;
         SIGAMessage m = new SIGAMessage();
         m.setSuccess(Boolean.FALSE);
-        alumnoValidador.validate(alumnoDTO, result);
+        clienteValidador.validate(alumnoDTO, result);
         if (!result.hasErrors()) {
-            m = gestionarAlumno.registrarAlumno(alumnoDTO);
-
+            m = gestionarCliente.registrarCliente(alumnoDTO);
+                   
             if (m.getSuccess()) {
                 m.setMessageType(SIGAMessage.MessageType.SUCCESS);
                 m.addMessages("Registro exitoso.Correo enviado a alumno");

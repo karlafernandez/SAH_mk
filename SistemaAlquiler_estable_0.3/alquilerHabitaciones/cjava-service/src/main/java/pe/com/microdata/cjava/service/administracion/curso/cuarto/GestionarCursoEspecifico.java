@@ -13,10 +13,10 @@ import pe.com.microdata.cjava.service.administracion.curso.cuarto.dto.CuartoDTO;
 public interface GestionarCursoEspecifico {
     
     public List obtenerListaCursoEspecifico();
-    public List obtenerListaCursoEspecificoPorBusqueda(BusquedaDTO busquedaDTO);    
+ //   public List obtenerListaCursoEspecificoPorBusqueda(BusquedaDTO busquedaDTO);    
     public SIGAMessage registrarCursoEspecifico(CuartoDTO dto);
     public SIGAMessage eliminarCursoEspecifico(Integer idCursoEspecifico);
     public SIGAMessage modificarCursoEspecifico(CuartoDTO dto);
-    public CuartoDTO obtenerCursoEspecificoPorId(Integer idCursoEsp);     
-    public Long obtenerTotalListaCursoEspecificoPorBusqueda(BusquedaDTO busquedaDTO);
+  //  public CuartoDTO obtenerCursoEspecificoPorId(Integer idCursoEsp);     
+   // public Long obtenerTotalListaCursoEspecificoPorBusqueda(BusquedaDTO busquedaDTO);
 }

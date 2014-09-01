@@ -51,7 +51,7 @@
                         </li>
                         <li class="page-scroll">
                             <a href="registrarClientes.html">Regístrate</a>
-                             <!--<div class="span6"> <a  href="registrarClientes.html" class=" btn btn-info fa-input pull-right">Volver a Listado</a>   </div>--> 
+                            <!--<div class="span6"> <a  href="registrarClientes.html" class=" btn btn-info fa-input pull-right">Volver a Listado</a>   </div>--> 
                         </li>
                         <li class="page-scroll">
                             <a href="sobre_nosotros.jsp">Sobre nosotras</a>
@@ -80,28 +80,23 @@
 
         <header>
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-
-                        <!--<img class="img-responsive" src="img/profile_1.png" alt="">-->
-                        <div class="intro-text">
-                            <span class="name">SAH</span>
-                            <hr class="star-light">
-                            <span class="skills">Localización de habitaciones para estudiantes</span>
-                        </div>
-
-
-                    </div>
-                </div>
+                w
             </div>
         </header>
 
-        <div class="span7" style="background-color: white;    padding-top: 10px;padding-bottom: 10px ;">
+        <div class="span7 text-center" style="background-color: white;    padding-top: 10px;padding-bottom: 10px ;">
             <form id="LoginForm" action="<c:url value='/'/>j_spring_security_check" method="post" > 
-                <div class="span5" style="padding-top: 30px  ">
+                <div class="span7" style="padding-top: 30px  ">
                     <img width="200px" src="<c:url value='/images/profile_1.png'/>"  style="text-align: right">
+
                 </div>
-                <div  class="span4  " > 
+
+                <div class="intro-text">
+                    <h2> SAHÚ </h2>
+                    <h3>  Localización de habitaciones para estudiantes </h3>
+                </div>
+
+                <div  class="span7" > 
                     <div style="padding-top: 5px">
                         <label  for="username" style="color: #6D648D">Nombre de usuario</label>
                         <input  type="text" style="height: 29px" id="username" name="j_username"/>
@@ -125,7 +120,7 @@
         </div>
 
 
-       
+
         <!-- Portfolio Modals -->
 
 

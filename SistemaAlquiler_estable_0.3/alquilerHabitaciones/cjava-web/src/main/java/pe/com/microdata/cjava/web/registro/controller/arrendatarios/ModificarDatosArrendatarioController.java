@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pe.com.microdata.cjava.common.base.SIGAMessage;
 import pe.com.microdata.cjava.service.gestionar_listas.GestionarListas;
-import pe.com.microdata.cjava.service.registro.GestionarInstructor;
+import pe.com.microdata.cjava.service.registro.GestionarArrendatario;
 import pe.com.microdata.cjava.service.registro.dto.ArrendatarioDTO;
 import pe.com.microdata.cjava.service.registro.validador.ModificarArrendatarioValidador;
 
@@ -38,7 +38,7 @@ public class ModificarDatosArrendatarioController extends BaseController {
     private static final String ID_INSTRUCTOR = "idInstructor";
     private static final String TIPO_DOCUMENTO = "lstTipoDocumento";
     @Autowired
-    private GestionarInstructor gestionarInstructor;
+    private GestionarArrendatario gestionarArrendatario;
     @Autowired
     GestionarListas gestionarListas;
   
@@ -57,7 +57,9 @@ public class ModificarDatosArrendatarioController extends BaseController {
  
     @RequestMapping(method = RequestMethod.GET)
     public String vista(ModelMap model, HttpServletRequest request, @RequestParam(ID_INSTRUCTOR) Integer idInstructor) {
-        ArrendatarioDTO promotor = gestionarInstructor.obtenerInstructorPorId(idInstructor);                       
+        ArrendatarioDTO promotor = gestionarArrendatario.obtenerArrendatarioPorId(idInstructor);
+                
+              
         model.addAttribute(INSTRUCTOR, promotor);
         return NOREDIRECCIONAR;
     }
@@ -70,7 +72,8 @@ public class ModificarDatosArrendatarioController extends BaseController {
         m.setSuccess(false);
         validator.validate(dto, result);
         if (!result.hasErrors()) {
-            m = gestionarInstructor.modificarInstructor(dto);
+            m = gestionarArrendatario.modificarArrendatario(dto);
+                  
                  
             if (m.getSuccess()) {
                 m.setMessageType(SIGAMessage.MessageType.SUCCESS);

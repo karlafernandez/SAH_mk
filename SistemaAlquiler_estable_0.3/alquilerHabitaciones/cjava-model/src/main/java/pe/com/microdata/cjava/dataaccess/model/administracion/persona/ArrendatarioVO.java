@@ -27,12 +27,16 @@ public class ArrendatarioVO  extends BaseVO{
     @Column(name = "id_ins", unique = true, nullable = false)
     private Integer idArrendatario;
 
- 
+ ////////////////////////may to one
+    
+    
     ////////////////// one to one 
     @OneToOne(fetch= FetchType.LAZY, cascade= CascadeType.ALL,optional=false)
     @JoinColumn(name = "persona_id_per")
     private PersonaVO arrendatarioPersonaVO;
 
+    
+    
     public ArrendatarioVO(){
      
     }

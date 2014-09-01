@@ -42,13 +42,13 @@ import pe.com.microdata.cjava.service.registro.dto.ItemCursoHistorialDTO;
 public class GestionarClienteImpl implements GestionarCliente {
 
     @Autowired
-    ClienteDAO alumnoDAO;
+    ClienteDAO clienteDAO;
     @Autowired
     PersonaDAO personaDAO;
     @Autowired
     UbigeoDAO ubigeoDAO;
     @Autowired
-    OperacionClienteDAO operacionAlumnoDAO;
+    OperacionClienteDAO operacionClienteDAO;
     @Autowired
     MailService mailService;
     @Autowired
@@ -57,8 +57,9 @@ public class GestionarClienteImpl implements GestionarCliente {
     SimpleDateFormat dateFormat = new SimpleDateFormat(Constants.FORMATO_FECHA);
     private Logger logger = Logger.getLogger(GestionarClienteImpl.class.getCanonicalName());
 
+    
     @Override
-    public SIGAMessage registrarAlumno(ClienteDTO alumnoDTO) {
+    public SIGAMessage registrarCliente(ClienteDTO alumnoDTO) {
         SIGAMessage msg = new SIGAMessage();
         msg.setSuccess(Boolean.FALSE);
         PersonaVO personaVO = new PersonaVO();
@@ -96,9 +97,9 @@ public class GestionarClienteImpl implements GestionarCliente {
             
             alumnoVO.setCorreoFaceAlumno(alumnoDTO.getCorreoFace());
            
-            Integer idAlumno = alumnoDAO.insert(alumnoVO);
+            Integer idAlumno = clienteDAO.insert(alumnoVO);
             if (idAlumno != 0) {
-                obtenerCodigoAlumno(idAlumno);
+                obtenerCodigoCliente(idAlumno);
             }
             //////////////////CORREO/////////////
             StringBuilder builder = new StringBuilder();
@@ -123,21 +124,23 @@ public class GestionarClienteImpl implements GestionarCliente {
         return msg;
     }
 
-    private void obtenerCodigoAlumno(Integer idAlumno) {
+    private void obtenerCodigoCliente(Integer idAlumno) {
         Calendar c = new GregorianCalendar();
         String annio = Integer.toString(c.get(Calendar.YEAR));
         PersonaVO personaVO = new PersonaVO();
-        ClienteVO alumnoVO = alumnoDAO.obtenerAlumnoPorIdAlumno(idAlumno);
+        ClienteVO alumnoVO = clienteDAO.obtenerClientePorIdCliente(idAlumno);
+               
         personaVO = alumnoVO.getClientePersonaVO();
         personaVO.setCodigo(annio + "-" + idAlumno.toString());
         personaDAO.saveOrUpdate(personaVO);
     }
 
     @Override
-    public ClienteDTO obtenerAlumnoPorId(Integer idAlumno) {
+    public ClienteDTO obtenerClientePorId(Integer idAlumno) {
 
         ClienteDTO alumnoDTO = new ClienteDTO();
-        ClienteVO alumnoVO = alumnoDAO.obtenerAlumnoPorIdAlumno(idAlumno);
+        ClienteVO alumnoVO = clienteDAO.obtenerClientePorIdCliente(idAlumno);
+             
         PersonaVO personaVO;
         //////////////////////////////ALUMNO VO/////////////////////////////
      
@@ -174,13 +177,14 @@ public class GestionarClienteImpl implements GestionarCliente {
     }
 
     @Override
-    public SIGAMessage modificarAlumno(ClienteDTO alumnoDTO) {
+    public SIGAMessage modificarCliente(ClienteDTO alumnoDTO) {
 
         SIGAMessage msg = new SIGAMessage();
         msg.setSuccess(Boolean.FALSE);
         PersonaVO personaVO = personaDAO.obtenerPersonaPorIdPersona(alumnoDTO.getIdPersona());
 
-        ClienteVO alumnoVO = alumnoDAO.obtenerAlumnoPorIdAlumno(alumnoDTO.getIdAlumno());
+        ClienteVO alumnoVO = clienteDAO.obtenerClientePorIdCliente(alumnoDTO.getIdAlumno());
+             
         Date fecha = new Date();
         Calendar c = new GregorianCalendar();
         String annio = Integer.toString(c.get(Calendar.YEAR));
@@ -214,22 +218,24 @@ public class GestionarClienteImpl implements GestionarCliente {
         
         alumnoVO.setCorreoFaceAlumno(alumnoDTO.getCorreoFace());
        
-        alumnoDAO.saveOrUpdate(alumnoVO);
+        clienteDAO.saveOrUpdate(alumnoVO);
         
         msg.setSuccess(Boolean.TRUE);
         return msg;
     }
 
     @Override
-    public void eliminarAlumno(Integer alumno) {
-        ClienteVO alumnoVO = alumnoDAO.obtenerAlumnoPorIdAlumno(alumno);
-        alumnoDAO.delete(alumnoVO);
+    public void eliminarCliente(Integer alumno) {
+        ClienteVO alumnoVO = clienteDAO.obtenerClientePorIdCliente(alumno);
+                
+        clienteDAO.delete(alumnoVO);
     }
 
     @Override
-    public List obtenerAlumnoPorBusqueda(BusquedaDTO busquedaDTO) {
+    public List obtenerClientePorBusqueda(BusquedaDTO busquedaDTO) {
         List<ClienteDTO> alumnoDTOs = new ArrayList<ClienteDTO>();
-        List<ClienteVO> alumnoVOs = alumnoDAO.obtenerAlumnosPorBusqueda(busquedaDTO);
+        List<ClienteVO> alumnoVOs = clienteDAO.obtenerClientesPorBusqueda(busquedaDTO);
+               
         PersonaVO personaVO;
         
         for (ClienteVO alumnoVO : alumnoVOs) {
@@ -264,14 +270,16 @@ public class GestionarClienteImpl implements GestionarCliente {
     }
 
     @Override
-    public Long obtenerTotalAlumnosPorBusqueda(BusquedaDTO busquedaDTO) {
-        Long total = alumnoDAO.obtenerTotalAlumnosPorBusqueda(busquedaDTO);
+    public Long obtenerTotalClientesPorBusqueda(BusquedaDTO busquedaDTO) {
+        Long total = clienteDAO.obtenerTotalClientesPorBusqueda(busquedaDTO);
+              
         return total;
     }
 
     @Override
     public ClienteDTO obtenerCodigoAutogenerado(BusquedaDTO busquedaDTO) {
-        Long pretotal = alumnoDAO.obtenerTotalAlumnosPorBusqueda(busquedaDTO);
+        Long pretotal = clienteDAO.obtenerTotalClientesPorBusqueda(busquedaDTO);
+             
         int intValue = pretotal.intValue();
         Integer codigo = intValue + 1;
         ClienteDTO alumno = new ClienteDTO();
@@ -280,9 +288,10 @@ public class GestionarClienteImpl implements GestionarCliente {
     }
 
     @Override
-    public List obtenerTotalAlumnos() {
+    public List obtenerTotalClientes() {
         List<ClienteDTO> alumnoDTOs = new ArrayList<ClienteDTO>();
-        List<ClienteVO> alumnoVOs = alumnoDAO.obtenerTotalAlumnos();
+        List<ClienteVO> alumnoVOs = clienteDAO.obtenerTotalClientes();
+                
         PersonaVO personaVO;
         for (ClienteVO alumnoVO : alumnoVOs) {
             ClienteDTO alumnoDTO = new ClienteDTO();
@@ -303,7 +312,7 @@ public class GestionarClienteImpl implements GestionarCliente {
     @Override
     public HistorialCursoDTO obtenerHistorialCursoPorIdAlumno(Integer idAlum) {
         HistorialCursoDTO historialDTO = new HistorialCursoDTO();
-        List<OperacionClienteVO> listOpe = operacionAlumnoDAO.obtenerListaOperacionPorIdAlum(idAlum);
+        List<OperacionClienteVO> listOpe = operacionClienteDAO.obtenerListaOperacionPorIdAlum(idAlum);
         List<ItemCursoHistorialDTO> listLLevados = new ArrayList<ItemCursoHistorialDTO>();
         List<ItemCursoHistorialDTO> listCursando = new ArrayList<ItemCursoHistorialDTO>();
         for (OperacionClienteVO vo : listOpe) {

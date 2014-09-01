@@ -17,7 +17,7 @@ import pe.com.microdata.cjava.common.base.CondicionDTO;
 import pe.com.microdata.cjava.common.base.Constants;
 import pe.com.microdata.cjava.common.base.ReglaDTO;
 import pe.com.microdata.cjava.dataaccess.base.hibernate.HibernateGenericDAO;
-import pe.com.microdata.cjava.dataaccess.domain.administracion.curso.CuartoDAO;
+import pe.com.microdata.cjava.dataaccess.domain.administracion.cuarto.CuartoDAO;
 import pe.com.microdata.cjava.dataaccess.model.administracion.curso.CuartoVO;
 import pe.com.microdata.cjava.dataaccess.util.GeneradorRestricciones;
 
@@ -30,11 +30,11 @@ public class HibernateCuartoDAO extends HibernateGenericDAO<CuartoVO, Integer>
     public HibernateCuartoDAO() {
         super(CuartoVO.class);
         eq = new HashMap<String, ReglaDTO>();
-        eq.put("buscarIdCuarto", new ReglaDTO(Constants.OPE_EQ, Constants.TYPE_INTEGER, "idCuarto" ));
+      //  eq.put("buscarIdCuarto", new ReglaDTO(Constants.OPE_EQ, Constants.TYPE_INTEGER, "idCuarto" ));
        // eq.put("buscarPorNombre", new ReglaDTO(Constants.OPE_EQ, Constants.TYPE_STRING, "nomCursoEspecifico"));    
       //  eq.put("buscarPorNomemclatura", new ReglaDTO(Constants.OPE_EQ, Constants.TYPE_STRING, "nomenCursoEspecifico"));
     }
-        
+        /*
     @Override
     public CuartoVO obtenerCuartoPorId(Integer id) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(CuartoVO.class);
@@ -120,5 +120,5 @@ public class HibernateCuartoDAO extends HibernateGenericDAO<CuartoVO, Integer>
         return lstComercio;
     }
        
-    
+    */
     }

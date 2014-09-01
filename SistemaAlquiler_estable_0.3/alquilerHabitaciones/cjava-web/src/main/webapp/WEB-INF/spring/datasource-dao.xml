@@ -5,7 +5,7 @@
     <import resource="datasource.xml"/>
 
     <!--      /////////////    REGISTROS            /////////////////////   -->
-    <bean id="pacienteDAO" class="pe.com.microdata.cjava.dataaccess.domain.hibernate.administracion.persona.HibernatePersonaDAO">
+    <bean id="personaDAO" class="pe.com.microdata.cjava.dataaccess.domain.hibernate.administracion.persona.HibernatePersonaDAO">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <bean id="clienteDAO" class="pe.com.microdata.cjava.dataaccess.domain.hibernate.administracion.persona.HibernateClienteDAO">

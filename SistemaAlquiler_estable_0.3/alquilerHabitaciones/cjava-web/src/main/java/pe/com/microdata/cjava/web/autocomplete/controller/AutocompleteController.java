@@ -14,7 +14,7 @@ import pe.com.microdata.cjava.service.autocomplete.Autocomplete;
 @Controller
 @RequestMapping(value = "/autocomplete")
 public class AutocompleteController {
-
+/*
     private static final String AUTOCOMPLETE = "autocomplete";
     @Autowired
     private Autocomplete autocomplete;
@@ -60,5 +60,5 @@ public class AutocompleteController {
         lista = this.autocomplete.buscarPorNombreAlumnos(search);         
         return lista;
     }
-            
+  */          
 }

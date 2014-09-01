@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import pe.com.microdata.cjava.common.validador.Validador;
-import pe.com.microdata.cjava.dataaccess.domain.administracion.curso.CuartoDAO;
+import pe.com.microdata.cjava.dataaccess.domain.administracion.cuarto.CuartoDAO;
 import pe.com.microdata.cjava.service.administracion.curso.cuarto.dto.CuartoDTO;
 
 

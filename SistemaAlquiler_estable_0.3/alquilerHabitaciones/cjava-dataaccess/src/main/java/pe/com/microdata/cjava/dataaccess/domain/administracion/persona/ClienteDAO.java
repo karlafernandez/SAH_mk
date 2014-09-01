@@ -7,23 +7,25 @@ import pe.com.microdata.cjava.dataaccess.model.administracion.persona.ClienteVO;
 
 public interface ClienteDAO extends GenericDAO<ClienteVO, Integer> {
 
-    public ClienteVO obtenerAlumnoPorNombreUsuario(String nomPersona);
+  
+    public ClienteVO obtenerClientePorNombreUsuario(String nomPersona);
 
-    public ClienteVO obtenerAlumnoPorIdAlumno(Integer idAlumno);
+    public ClienteVO obtenerClientePorIdCliente(Integer idAlumno);
 
-    public List<ClienteVO> obtenerAlumnosPorBusqueda(BusquedaDTO busquedaDTO);
+    public List<ClienteVO> obtenerClientesPorBusqueda(BusquedaDTO busquedaDTO);
 
-    public Long obtenerTotalAlumnosPorBusqueda(BusquedaDTO busquedaDTO);
+    public Long obtenerTotalClientesPorBusqueda(BusquedaDTO busquedaDTO);
 
-    public List obtenerAlumnoPorIdAlumnoLista(Integer idAlumno);
+    public List obtenerClientePorIdClienteLista(Integer idAlumno);
 
     public Boolean existeUsuario(String usuario);
 
-    public List obtenerTotalAlumnos();
+    public List obtenerTotalClientes();
 
-    public List obtenerNombreDNIAlumnosPorBusqueda(String strBusqueda);
+    public List obtenerNombreDNIClientesPorBusqueda(String strBusqueda);
 
-    public List obtenerAlumnosConCursoPorBusqueda(BusquedaDTO busquedaDTO);
+    public List obtenerClientesConCursoPorBusqueda(BusquedaDTO busquedaDTO);
 
-    public Long obtenerTotalAlumnosConCursoPorBusqueda(BusquedaDTO busquedaDTO);
-}
+    public Long obtenerTotalClientesConCursoPorBusqueda(BusquedaDTO busquedaDTO);
+
+    }

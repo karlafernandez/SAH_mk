@@ -76,10 +76,10 @@ public class AlquilarVO extends BaseVO {
     private SubTipoVO idEstadoVO;
     
  
-    @IndexColumn(name="id_sal")   
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idOperacionVO", cascade = CascadeType.ALL)
-    private List<OperacionClienteVO> listaClienteVO = new ArrayList<OperacionClienteVO>();
-        
+//    @IndexColumn(name="id_sal")   
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "idOperacionVO", cascade = CascadeType.ALL)
+//    private List<OperacionClienteVO> listaClienteVO = new ArrayList<OperacionClienteVO>();
+//        
 
     public AlquilarVO() {
     }
@@ -197,19 +197,7 @@ public class AlquilarVO extends BaseVO {
         this.idCuartoVO = idCuartoVO;
     }
 
-    /**
-     * @return the listaClienteVO
-     */
-    public List<OperacionClienteVO> getListaClienteVO() {
-        return listaClienteVO;
-    }
-
-    /**
-     * @param listaClienteVO the listaClienteVO to set
-     */
-    public void setListaClienteVO(List<OperacionClienteVO> listaClienteVO) {
-        this.listaClienteVO = listaClienteVO;
-    }
+  
 
    
                     
